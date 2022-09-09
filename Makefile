@@ -6,13 +6,13 @@
 #    By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 18:10:19 by lwilliam          #+#    #+#              #
-#    Updated: 2022/09/01 14:02:13 by lwilliam         ###   ########.fr        #
+#    Updated: 2022/09/09 17:19:11 by lwilliam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
 
-SRC = push_swap.c
+SRC = push_swap.c swap.c
 
 CC = gcc
 
@@ -22,7 +22,7 @@ all : $(NAME)
 
 $(NAME) :
 	make libft
-	$(CC) $(CFLAGS) $(SRC) $(NAME) -o push_swap
+	$(CC) $(CFLAGS) $(SRC) $(NAME) -o push_swap #-fsanitize=address
 
 libft:
 	make -C libft_printf
@@ -40,3 +40,5 @@ fclean : clean
 
 re : fclean all
 	make re -C libft_printf
+
+.PHONY : $(NAME)
