@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/09 18:42:45 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:06:09 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,21 @@ typedef struct s_stack
 
 void	alt_f4(char *msg);
 void	sa(t_stack *stack);
+void	sb(t_stack *stack);
+void	ss(t_stack *stack);
+void	pb(t_stack *stack);
+void	move_a_up(t_stack *stack);
+void	pa(t_stack *stack);
+void	move_b_up(t_stack *stack);
+void	ra(t_stack *stack);
+void	rb(t_stack *stack);
+void	rr(t_stack *stack);
+void	rra(t_stack *stack);
+void	rrb(t_stack *stack);
+void	rrr(t_stack *stack);
+
+
+
+void	print_test(t_stack *stack, char *where_a, char *where_b);
 
 #endif

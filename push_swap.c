@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/09 18:41:15 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:48:07 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,17 @@ void	num_check(char **av, t_stack *stack)
 		x++;
 		aft = ft_atoi(av[x]);
 		if (aft - bfr < 0)
-			sa(stack);
+		{
+			rra(stack);
+			pb(stack);
+			pb(stack);
+			pb(stack);
+			rrb(stack);
+			rrr(stack);
+			rr(stack);
+			ss(stack);
+			pa(stack);
+		}
 	}
 }
 
@@ -64,36 +74,50 @@ void	numto_a(char **av, t_stack *stack)
 	int		x;
 	int		x_a;
 	int		*num;
-	int		y;
 
 	x = 0;
 	x_a = 0;
 	num = malloc(sizeof(int) * (stack->a_count));
+	stack->b = malloc(sizeof(int) * (stack->a_count));
 	while (av[++x])
 	{
 		num[x_a] = (int)ft_atoi(av[x]);
 		x_a++;
 	}
 	stack->a = num;
-	free(num);
+	print_test(stack, "a at start", "b at start");
+}
+
+void	print_test(t_stack *stack, char *where_a, char *where_b)
+{
+	int	y;
+
 	y = 0;
 	while (y < stack->a_count)
 	{
-		printf("| before sa: %d ", stack->a[y++]);
+		printf("| %s: %d ", where_a, stack->a[y++]);
 	}
-	printf("\n");
+	printf("\n\n");
+	y = 0;
+	while (y < stack->b_count)
+	{
+		printf("| %s: %d ", where_b, stack->b[y++]);
+	}
+	printf("\n\n");
 }
 
 int	main(int ac, char **av)
 {
 	t_stack	stack;
-	int		x;
 
-	x = 0;
-	stack.b = 0;
+	stack.b_count = 0;
 	if (ac < 2)
 		ft_printf("Arguments is less than 2\n");
 	alnum_filter(av, &stack);
 	numto_a(av, &stack);
 	num_check(av, &stack);
+	print_test(&stack, "a at the end", "b at the end");
+	free(stack.a);
+	free(stack.b);
+	// system("leaks push_swap");
 }

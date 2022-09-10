@@ -6,13 +6,13 @@
 #    By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 18:10:19 by lwilliam          #+#    #+#              #
-#    Updated: 2022/09/09 17:19:11 by lwilliam         ###   ########.fr        #
+#    Updated: 2022/09/10 14:06:41 by lwilliam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
 
-SRC = push_swap.c swap.c
+SRC = push_swap.c swap.c push.c rotate.c rev_rotate.c
 
 CC = gcc
 
