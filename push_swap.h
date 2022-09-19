@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/10 14:06:09 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:16:19 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	rr(t_stack *stack);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
-
-
 
 void	print_test(t_stack *stack, char *where_a, char *where_b);
 

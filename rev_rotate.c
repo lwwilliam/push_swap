@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:39:51 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/10 14:56:09 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:40:42 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rra(t_stack *stack)
 	int	last;
 
 	last = stack->a[stack->a_count - 1];
-	tmp = stack->a_count;
+	tmp = stack->a_count - 1;
 	while (tmp > -1)
 	{
 		stack->a[tmp + 1] = stack->a[tmp];
@@ -34,7 +34,7 @@ void	rrb(t_stack *stack)
 	int	last;
 
 	last = stack->b[stack->b_count - 1];
-	tmp = stack->b_count;
+	tmp = stack->b_count - 1;
 	while (tmp > -1)
 	{
 		stack->b[tmp + 1] = stack->b[tmp];
@@ -46,7 +46,8 @@ void	rrb(t_stack *stack)
 
 void	rrr(t_stack *stack)
 {
+	printf("start of rrr\n");
 	rra(stack);
 	rrb(stack);
-	printf("rrr is called\n");
+	printf("end of rrr\n");
 }

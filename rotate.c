@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:22:15 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/10 14:56:27 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/10 15:17:10 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	rb(t_stack *stack)
 
 void	rr(t_stack *stack)
 {
+	printf("start of rr\n");
 	ra(stack);
 	rb(stack);
-	printf("rr is called\n");
+	printf("end of rr\n");
 }

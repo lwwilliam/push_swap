@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:05:56 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/10 14:56:49 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/10 15:16:41 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	sb(t_stack *stack)
 
 void	ss(t_stack *stack)
 {
+	printf("start of ss\n");
 	sa(stack);
 	sb(stack);
-	printf("ss is called\n");
+	printf("end of ss\n");
 }

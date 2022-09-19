@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/10 14:48:07 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:43:54 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	numto_a(char **av, t_stack *stack)
 
 	x = 0;
 	x_a = 0;
-	num = malloc(sizeof(int) * (stack->a_count));
-	stack->b = malloc(sizeof(int) * (stack->a_count));
+	num = malloc(sizeof(int) * (stack->a_count + 1));
+	stack->b = malloc(sizeof(int) * (stack->a_count + 1));
 	while (av[++x])
 	{
 		num[x_a] = (int)ft_atoi(av[x]);
