@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/21 17:41:54 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/22 00:08:34 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,67 +28,6 @@ void	t_num(t_stack *stack)
 	}
 }
 
-// void	divide(t_stack *stack)
-// {
-// 	int	half;
-// 	int	tmp;
-// 	int	x;
-// 	int	y;
-
-// 	half = stack->a_count / 2;
-// 	tmp = 0;
-// 	x = 0;
-// 	y = 0;
-// 	stack->tmp_a = malloc(sizeof(int) * (stack->a_count));
-// 	while (half > 0)
-// 	{
-// 		x = 0;
-// 		while (x < stack->a_count)
-// 		{
-// 			if (stack->a[x] == tmp)
-// 			{
-// 				stack->tmp_a[y] = stack->a[x];
-// 				y++;
-// 				half--;
-// 			}
-// 			x++;
-// 		}
-// 		tmp++;
-// 	}
-// 	while (stack->b_count < 7)
-// 	{
-// 		push(stack);
-// 	}
-// }
-
-// void	push(t_stack *stack)
-// {
-// 	int	x;
-// 	int	half;
-// 	int	tmp;
-
-// 	half = stack->a_count / 2;
-// 	tmp = 0;
-// 	x = 0;
-// 	while (x < half)
-// 	{
-// 		printf("currrnt a  : %d\n", stack->a[0]);
-// 		printf("currrnt tmp: %d\n", stack->tmp_a[x]);
-// 		if (stack->tmp_a[x] == stack->a[0])
-// 		{
-// 			x = 0;
-// 			pb(stack);
-// 			x = 0;
-// 			push(stack);
-// 		}
-// 		x++;
-// 	}
-// 	if (stack->tmp_a[x] != stack->a[0])
-// 	{
-// 		x = 0;
-// 		ra(stack);
-// 	}
-// }
 void	arr_dup(t_stack *stack)
 {
 	int	x;
@@ -96,14 +35,14 @@ void	arr_dup(t_stack *stack)
 
 	x = 0;
 	y = 0;
-	stack->tmp_a = malloc(sizeof(int) * (stack->a_count + 1));
-	while (x < stack->a_count)
+	stack->tmp_a = malloc(sizeof(int) * (stack->arr_count + 1));
+	while (x < stack->arr_count)
 	{
 		stack->tmp_a[y] = stack->a[x];
-		printf(stack->tmp_a, )
 		x++;
 		y++;
 	}
+	printf("num: %d %d \n", stack->tmp_a[1], stack->a[1]);
 }
 
 void	swap(int *xp, int *yp)
@@ -120,17 +59,15 @@ void	sort(t_stack *stack)
 	int	i;
 	int	j;
 	int	min;
-	int	y;
 
 	i = 0;
 	j = 0;
-	y = 0;
 	arr_dup(stack);
-	while (i < stack->a_count)
+	while (i < stack->arr_count)
 	{
 		min = i;
 		j = i + 1;
-		while (j < stack->a_count)
+		while (j < stack->arr_count)
 		{
 			if (stack->tmp_a[j] < stack->tmp_a[min])
 				min = j;
@@ -144,16 +81,14 @@ void	sort(t_stack *stack)
 
 void	med(t_stack *stack)
 {
-	int	tmp;
-
-	tmp = stack->a_count % 2;
-	if (tmp == 1)
-		tmp = stack->a_count / 2;
-	if (tmp == 0)
-		tmp = stack->a_count / 2;
-	printf("test  %d %d\n", tmp, stack->a[3]);
-	stack->median = stack->a[tmp - 2];
+	stack->med_pos = stack->arr_count % 2;
+	if (stack->med_pos == 1)
+		stack->med_pos = stack->arr_count / 2;
+	if (stack->med_pos == 0)
+		stack->med_pos = stack->arr_count / 2;
+	stack->median = stack->tmp_a[stack->med_pos - 1];
 	pushing(stack);
+	
 }
 
 void	pushing(t_stack *stack)
@@ -161,14 +96,14 @@ void	pushing(t_stack *stack)
 	int	x;
 
 	x = 0;
-	while (x < 15)
+	while (x < stack->arr_count)
 	{
-		printf("%d   %d   %d\n", stack->a[0], stack->median, stack->a_count);
 		if (stack->a[0] <= stack->median)
 			pb(stack);
 		else
 			ra(stack);
 		x++;
 	}
-	exit(0);
+	free(stack->tmp_a);
+	stack->arr_count -= stack->med_pos;
 }

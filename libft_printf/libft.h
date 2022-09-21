@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 11:15:36 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/01 18:18:42 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:22:57 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
 
 long	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);

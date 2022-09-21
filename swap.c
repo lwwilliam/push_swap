@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:05:56 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/19 10:55:47 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:23:47 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,20 @@
 void	sa(t_stack *stack)
 {
 	int	tmp;
-	int	y;
 
 	tmp = stack->a[0];
 	stack->a[0] = stack->a[1];
 	stack->a[1] = tmp;
-	y = 0;
 	print_test(stack, "a after sa", "b after sa");
 }
 
 void	sb(t_stack *stack)
 {
 	int	tmp;
-	int	y;
 
 	tmp = stack->b[0];
 	stack->b[0] = stack->b[1];
 	stack->b[1] = tmp;
-	y = 0;
 	print_test(stack, "a after sb", "b after sb");
 }
 

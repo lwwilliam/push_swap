@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/21 16:52:18 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:56:35 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_stack
 	int	b_count;
 	int	*tmp_a;
 	int	median;
+	int	arr_count;
+	int	med_pos;
 }	t_stack;
 
 void	alt_f4(char *msg);
