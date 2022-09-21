@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:05:56 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/10 15:16:41 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:55:47 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,12 @@ void	sb(t_stack *stack)
 
 void	ss(t_stack *stack)
 {
-	printf("start of ss\n");
+	printf("\033[1;31m");
+	printf("start of ss\n\n");
+	printf("\033[0m");
 	sa(stack);
 	sb(stack);
-	printf("end of ss\n");
+	printf("\033[1;31m");
+	printf("end of ss\n\n");
+	printf("\033[0m");
 }

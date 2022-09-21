@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:39:51 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/19 10:40:42 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:56:58 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ void	rrb(t_stack *stack)
 
 void	rrr(t_stack *stack)
 {
-	printf("start of rrr\n");
+	printf("\033[1;31m");
+	printf("start of rrr\n\n");
+	printf("\033[0m");
 	rra(stack);
 	rrb(stack);
-	printf("end of rrr\n");
+	printf("\033[1;31m");
+	printf("end of rrr\n\n");
+	printf("\033[0m");
 }
