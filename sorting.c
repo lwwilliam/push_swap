@@ -6,43 +6,32 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/22 00:08:34 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:46:31 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	t_num(t_stack *stack)
-{
-	if (stack->a[1] < stack->a[0])
-		sa(stack);
-	if (stack->a[2] < stack->a[1])
-	{
-		pb(stack);
-		ra(stack);
-		pa(stack);
-		if (stack->a[1] < stack->a[0])
-		{
-			sa(stack);
-		}
-	}
-}
-
-void	arr_dup(t_stack *stack)
+void	arr_dup(t_stack *stack, char a_b)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	stack->tmp_a = malloc(sizeof(int) * (stack->arr_count + 1));
-	while (x < stack->arr_count)
+	stack->tmp_arr = malloc(sizeof(int) * (stack->arr_count + 1));
+	while (x < stack->arr_count && a_b == 'a')
 	{
-		stack->tmp_a[y] = stack->a[x];
+		stack->tmp_arr[y] = stack->a[x];
 		x++;
 		y++;
 	}
-	printf("num: %d %d \n", stack->tmp_a[1], stack->a[1]);
+	while (x < stack->arr_count && a_b == 'a')
+	{
+		stack->tmp_arr[y] = stack->b[x];
+		x++;
+		y++;
+	}
 }
 
 void	swap(int *xp, int *yp)
@@ -54,7 +43,7 @@ void	swap(int *xp, int *yp)
 	*yp = temp;
 }
 
-void	sort(t_stack *stack)
+void	sort(t_stack *stack, char a_b)
 {
 	int	i;
 	int	j;
@@ -62,48 +51,57 @@ void	sort(t_stack *stack)
 
 	i = 0;
 	j = 0;
-	arr_dup(stack);
+	arr_dup(stack, a_b);
 	while (i < stack->arr_count)
 	{
 		min = i;
 		j = i + 1;
 		while (j < stack->arr_count)
 		{
-			if (stack->tmp_a[j] < stack->tmp_a[min])
+			if (stack->tmp_arr[j] < stack->tmp_arr[min])
 				min = j;
 			j++;
 		}
-		swap(&stack->tmp_a[min], &stack->tmp_a[i]);
+		swap(&stack->tmp_arr[min], &stack->tmp_arr[i]);
 		i++;
 	}
-	med(stack);
+	med(stack, a_b);
 }
 
-void	med(t_stack *stack)
+void	med(t_stack *stack, char a_b)
 {
 	stack->med_pos = stack->arr_count % 2;
 	if (stack->med_pos == 1)
-		stack->med_pos = stack->arr_count / 2;
+		stack->med_pos = (stack->arr_count / 2);
 	if (stack->med_pos == 0)
 		stack->med_pos = stack->arr_count / 2;
-	stack->median = stack->tmp_a[stack->med_pos - 1];
-	pushing(stack);
+	stack->median = stack->tmp_arr[stack->med_pos];
+	printf(" \033[1;31m median %d   \033[m\n ", stack->median);
+	pushing(stack, a_b);
 	
 }
 
-void	pushing(t_stack *stack)
+void	pushing(t_stack *stack, char a_b)
 {
 	int	x;
 
 	x = 0;
-	while (x < stack->arr_count)
+	while (x < stack->arr_count && a_b == 'a')
 	{
-		if (stack->a[0] <= stack->median)
+		if (stack->a[0] < stack->median)
 			pb(stack);
 		else
 			ra(stack);
 		x++;
 	}
-	free(stack->tmp_a);
+	while (x < stack->arr_count && a_b == 'b')
+	{
+		if (stack->a[0] < stack->median)
+			pa(stack);
+		else
+			rb(stack);
+		x++;
+	}
+	free(stack->tmp_arr);
 	stack->arr_count -= stack->med_pos;
 }

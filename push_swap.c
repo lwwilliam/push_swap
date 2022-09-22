@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/22 00:10:18 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:23:03 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,19 @@ void	num_check(char **av, t_stack *stack)
 		aft = ft_atoi(av[x]);
 		if (aft - bfr < 0)
 		{
+			while (stack->a_count > 3)
+				sort(stack, 'a');
 			if (stack->a_count == 3)
-				t_num(stack);
-			while (stack->a_count != 2)
-				sort(stack);
+			{
+				t_num_a(stack);
+				two_num(stack, 'a');
+				two_num(stack, 'b');
+			}
+			else if (stack->a_count == 2)
+			{
+				two_num(stack, 'a');
+				two_num(stack, 'b');
+			}
 			exit(0);
 		}
 	}

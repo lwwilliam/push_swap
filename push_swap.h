@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/21 23:56:35 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:40:59 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_stack
 	int	*b;
 	int	a_count;
 	int	b_count;
-	int	*tmp_a;
+	int	*tmp_arr;
 	int	median;
 	int	arr_count;
 	int	med_pos;
@@ -45,10 +45,12 @@ void	rr(t_stack *stack);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
-void	t_num(t_stack *stack);
-void	sort(t_stack *stack);
-void	med(t_stack *stack);
-void	pushing(t_stack *stack);
+void	t_num_a(t_stack *stack);
+void	two_num(t_stack *stack, char a_b);
+void	arr_dup(t_stack *stack, char a_b);
+void	sort(t_stack *stack, char a_b);
+void	med(t_stack *stack, char a_b);
+void	pushing(t_stack *stack, char a_b);
 
 
 void	print_test(t_stack *stack, char *where_a, char *where_b);
