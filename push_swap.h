@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/22 13:40:59 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:05:45 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_stack
 	int	median;
 	int	arr_count;
 	int	med_pos;
+	int fst_run;
+	int	tmp_arr_count;
+
 }	t_stack;
 
 void	alt_f4(char *msg);
@@ -51,6 +54,7 @@ void	arr_dup(t_stack *stack, char a_b);
 void	sort(t_stack *stack, char a_b);
 void	med(t_stack *stack, char a_b);
 void	pushing(t_stack *stack, char a_b);
+// void	pushing2(t_stack *stack, char a_b);
 
 
 void	print_test(t_stack *stack, char *where_a, char *where_b);

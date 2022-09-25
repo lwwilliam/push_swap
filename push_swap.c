@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/25 15:47:35 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/26 02:38:21 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	num_check(char **av, t_stack *stack)
 	int		bfr;
 	int		aft;
 	int		x;
+	int		tmp;
 
 	x = 1;
 	while (av[x + 1])
@@ -32,20 +33,45 @@ void	num_check(char **av, t_stack *stack)
 		aft = ft_atoi(av[x]);
 		if (aft - bfr < 0)
 		{
-			while (stack->a_count > 3)
+			if (stack->fst_run == 1)
+				printf("\033[1;31m 2nd run \033[0m\n");
+			sort(stack, 'a');
+			while (stack->a_count > 3 && stack->fst_run == 0)
 				sort(stack, 'a');
-			if (stack->a_count == 3)
+			if (stack->a_count == 3 || stack->fst_run == 1)
+			{
+				printf("\n\n\n\n %d \n\n\n\n", tmp);
+				// tmp = 10;
+				while (tmp-- > 0)
+				{
+					ra(stack);
+					printf("tmp : %d\n", tmp);
+				}
+				t_num_a(stack);
+			}
+			two_num(stack, 'a');
+			two_num(stack, 'b');
+			tmp = stack->b_count - stack->arr_count;
+			sort(stack, 'b');
+			if (stack->fst_run == 1)
 			{
 				t_num_a(stack);
-				two_num(stack, 'a');
 				two_num(stack, 'b');
+				if (stack->b_count > 0)
+				{
+					pa(stack);
+					two_num(stack, 'a');
+				}
 			}
-			else if (stack->a_count == 2)
-			{
-				two_num(stack, 'a');
-				two_num(stack, 'b');
-			}
-			exit(0);
+			if (stack->fst_run == 1)
+				exit(0);
+			while (tmp-- > 0)
+				rb(stack);
+			two_num(stack, 'b');
+			stack->arr_count = stack->b_count;
+			sort(stack, 'b');
+			stack->fst_run = 1;
+			num_check(av, stack);
 		}
 	}
 }
@@ -117,6 +143,7 @@ int	main(int ac, char **av)
 	t_stack	stack;
 
 	stack.b_count = 0;
+	stack.fst_run = 0;
 	if (ac < 2)
 		ft_printf("Arguments is less than 2\n");
 	alnum_filter(av, &stack);

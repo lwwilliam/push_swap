@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/22 16:46:31 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:06:00 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	arr_dup(t_stack *stack, char a_b)
 		x++;
 		y++;
 	}
-	while (x < stack->arr_count && a_b == 'a')
+	while (x < stack->arr_count && a_b == 'b')
 	{
 		stack->tmp_arr[y] = stack->b[x];
 		x++;
@@ -48,6 +48,7 @@ void	sort(t_stack *stack, char a_b)
 	int	i;
 	int	j;
 	int	min;
+	int x;
 
 	i = 0;
 	j = 0;
@@ -65,6 +66,12 @@ void	sort(t_stack *stack, char a_b)
 		swap(&stack->tmp_arr[min], &stack->tmp_arr[i]);
 		i++;
 	}
+	x = 0;
+	while (x < stack->b_count)
+	{
+		printf("tmp_arr %d\n", stack->tmp_arr[x]);
+		x++;
+	}
 	med(stack, a_b);
 }
 
@@ -76,8 +83,11 @@ void	med(t_stack *stack, char a_b)
 	if (stack->med_pos == 0)
 		stack->med_pos = stack->arr_count / 2;
 	stack->median = stack->tmp_arr[stack->med_pos];
-	printf(" \033[1;31m median %d   \033[m\n ", stack->median);
+	printf(" \033[1;31m median %d   \033[0m\n ", stack->median);
+	// if (f_s == 'f')
 	pushing(stack, a_b);
+	// if (f_s == 's')
+	// 	pushing2(stack, a_b);
 	
 }
 
@@ -94,9 +104,10 @@ void	pushing(t_stack *stack, char a_b)
 			ra(stack);
 		x++;
 	}
+	x = 0;
 	while (x < stack->arr_count && a_b == 'b')
 	{
-		if (stack->a[0] < stack->median)
+		if (stack->b[0] >= stack->median)
 			pa(stack);
 		else
 			rb(stack);
@@ -105,3 +116,35 @@ void	pushing(t_stack *stack, char a_b)
 	free(stack->tmp_arr);
 	stack->arr_count -= stack->med_pos;
 }
+
+// void	pushing2(t_stack *stack, char a_b)
+// {
+// 	int	x;
+	
+// 	x = 0;
+// 	while (x < stack->arr_count && a_b == 'a')
+// 	{
+// 		if (stack->a[0] < stack->median)
+// 		{
+// 			pb(stack);
+// 			sb(stack);
+// 			pa(stack);
+// 		}
+// 		else
+// 			pb(stack);
+// 		x++;
+// 	}
+// 	x = 0;
+// 	while (x <= stack->arr_count && a_b == 'b')
+// 	{
+// 		if (stack->b[0] >= stack->median)
+// 		{
+// 			pa(stack);
+// 		}
+// 		else
+// 			rb(stack);
+// 		x++;
+// 	}
+// 	free(stack->tmp_arr);
+// 	stack->arr_count -= stack->med_pos;
+// }
