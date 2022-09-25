@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/22 16:42:22 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:47:47 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	two_num(t_stack *stack, char a_b)
 	if (stack->b[1] > stack->b[0] && a_b == 'b')
 	{
 		sb(stack);
+		pa(stack);
 		pa(stack);
 	}
 	else if (stack->b[1] < stack->b[0] && a_b == 'b')
