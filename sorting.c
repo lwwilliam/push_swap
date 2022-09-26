@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/26 01:06:00 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:13:54 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	sort(t_stack *stack, char a_b)
 	int	i;
 	int	j;
 	int	min;
-	int x;
+	int	x;
 
 	i = 0;
 	j = 0;
@@ -84,11 +84,7 @@ void	med(t_stack *stack, char a_b)
 		stack->med_pos = stack->arr_count / 2;
 	stack->median = stack->tmp_arr[stack->med_pos];
 	printf(" \033[1;31m median %d   \033[0m\n ", stack->median);
-	// if (f_s == 'f')
 	pushing(stack, a_b);
-	// if (f_s == 's')
-	// 	pushing2(stack, a_b);
-	
 }
 
 void	pushing(t_stack *stack, char a_b)
@@ -120,7 +116,7 @@ void	pushing(t_stack *stack, char a_b)
 // void	pushing2(t_stack *stack, char a_b)
 // {
 // 	int	x;
-	
+
 // 	x = 0;
 // 	while (x < stack->arr_count && a_b == 'a')
 // 	{

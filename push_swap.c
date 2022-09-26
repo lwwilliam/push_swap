@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/26 02:38:21 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:12:47 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	num_check(char **av, t_stack *stack)
 	int		tmp;
 
 	x = 1;
+	tmp = 0;
 	while (av[x + 1])
 	{
 		bfr = ft_atoi(av[x]);
@@ -40,18 +41,19 @@ void	num_check(char **av, t_stack *stack)
 				sort(stack, 'a');
 			if (stack->a_count == 3 || stack->fst_run == 1)
 			{
-				printf("\n\n\n\n %d \n\n\n\n", tmp);
-				// tmp = 10;
+				tmp = stack->a_count - stack->arr_count;
+				printf("tmp %d\n", tmp);
 				while (tmp-- > 0)
 				{
 					ra(stack);
-					printf("tmp : %d\n", tmp);
+					printf("\n\ntmp : %d\n", tmp);
 				}
 				t_num_a(stack);
 			}
 			two_num(stack, 'a');
 			two_num(stack, 'b');
 			tmp = stack->b_count - stack->arr_count;
+			printf("duifgafavf %d \n\n\n", stack->arr_count);
 			sort(stack, 'b');
 			if (stack->fst_run == 1)
 			{
@@ -152,5 +154,5 @@ int	main(int ac, char **av)
 	print_test(&stack, "a at the end", "b at the end");
 	free(stack.a);
 	free(stack.b);
-	// system("leaks push_swap");
+	system("leaks push_swap");
 }
