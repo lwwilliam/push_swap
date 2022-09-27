@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/26 20:13:54 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/09/27 22:04:04 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	swap(int *xp, int *yp)
 	*yp = temp;
 }
 
-void	sort(t_stack *stack, char a_b)
+void	sort(t_stack *stack, char a_b, char num)
 {
 	int	i;
 	int	j;
@@ -67,12 +67,13 @@ void	sort(t_stack *stack, char a_b)
 		i++;
 	}
 	x = 0;
-	while (x < stack->b_count)
+	while (x < stack->b_count && num == '1')
 	{
 		printf("tmp_arr %d\n", stack->tmp_arr[x]);
 		x++;
 	}
-	med(stack, a_b);
+	if (num == '1')
+		med(stack, a_b);
 }
 
 void	med(t_stack *stack, char a_b)
@@ -113,34 +114,27 @@ void	pushing(t_stack *stack, char a_b)
 	stack->arr_count -= stack->med_pos;
 }
 
-// void	pushing2(t_stack *stack, char a_b)
-// {
-// 	int	x;
+void	check(t_stack *stack)
+{
+	int	tmp;
+	int x;
+	int r_w;
 
-// 	x = 0;
-// 	while (x < stack->arr_count && a_b == 'a')
-// 	{
-// 		if (stack->a[0] < stack->median)
-// 		{
-// 			pb(stack);
-// 			sb(stack);
-// 			pa(stack);
-// 		}
-// 		else
-// 			pb(stack);
-// 		x++;
-// 	}
-// 	x = 0;
-// 	while (x <= stack->arr_count && a_b == 'b')
-// 	{
-// 		if (stack->b[0] >= stack->median)
-// 		{
-// 			pa(stack);
-// 		}
-// 		else
-// 			rb(stack);
-// 		x++;
-// 	}
-// 	free(stack->tmp_arr);
-// 	stack->arr_count -= stack->med_pos;
-// }
+	x = 0;
+	r_w = 0;
+	tmp = stack->arr_count;
+	stack->arr_count = stack->a_count;
+	sort(stack, 'a', '0');
+	while (x != stack->a_count && r_w == 0)
+	{
+		if (stack->a[x] != stack->tmp_arr[x])
+		{
+			r_w = 1;
+		}
+		x++;
+	}
+	free(stack->tmp_arr);
+	stack->arr_count = tmp;
+	if (x == stack->a_count && r_w == 0 && stack->b_count == 0)
+		exit(0);
+}
