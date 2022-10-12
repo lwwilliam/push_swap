@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/27 21:38:33 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:57:02 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_stack
 	int	median;
 	int	arr_count;
 	int	med_pos;
-	int	fst_run;
+	int	run_num;
+	int	run_set;
 	int	tmp_arr_count;
 
 }	t_stack;
@@ -48,6 +49,8 @@ void	rr(t_stack *stack);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
+void	dup_check(t_stack *stack);
+int		first_two(t_stack *stack);
 void	num_check(char **av, t_stack *stack);
 void	num_check2(char **av, t_stack *stack);
 void	check(t_stack *stack);

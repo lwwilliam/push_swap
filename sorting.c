@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/27 22:04:04 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:13:38 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sort(t_stack *stack, char a_b, char num)
 		i++;
 	}
 	x = 0;
-	while (x < stack->b_count && num == '1')
+	while (x < stack->arr_count && num == '1')
 	{
 		printf("tmp_arr %d\n", stack->tmp_arr[x]);
 		x++;
@@ -84,7 +84,7 @@ void	med(t_stack *stack, char a_b)
 	if (stack->med_pos == 0)
 		stack->med_pos = stack->arr_count / 2;
 	stack->median = stack->tmp_arr[stack->med_pos];
-	printf(" \033[1;31m median %d   \033[0m\n ", stack->median);
+	printf(" \033[1;31m median %d   \033[0m\n", stack->median);
 	pushing(stack, a_b);
 }
 
@@ -112,29 +112,4 @@ void	pushing(t_stack *stack, char a_b)
 	}
 	free(stack->tmp_arr);
 	stack->arr_count -= stack->med_pos;
-}
-
-void	check(t_stack *stack)
-{
-	int	tmp;
-	int x;
-	int r_w;
-
-	x = 0;
-	r_w = 0;
-	tmp = stack->arr_count;
-	stack->arr_count = stack->a_count;
-	sort(stack, 'a', '0');
-	while (x != stack->a_count && r_w == 0)
-	{
-		if (stack->a[x] != stack->tmp_arr[x])
-		{
-			r_w = 1;
-		}
-		x++;
-	}
-	free(stack->tmp_arr);
-	stack->arr_count = tmp;
-	if (x == stack->a_count && r_w == 0 && stack->b_count == 0)
-		exit(0);
 }
