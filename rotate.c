@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:22:15 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/19 10:57:21 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:25:55 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ra(t_stack *stack)
 		tmp++;
 	}
 	stack->a[tmp] = first;
-	print_test(stack, "a after ra", "b after ra");
+	ft_printf("ra\n");
+	// print_test(stack, "a after ra", "b after ra");
 }
 
 void	rb(t_stack *stack)
@@ -41,17 +42,13 @@ void	rb(t_stack *stack)
 		tmp++;
 	}
 	stack->b[tmp] = first;
-	print_test(stack, "a after rb", "b after rb");
+	ft_printf("rb\n");
+	// print_test(stack, "a after rb", "b after rb");
 }
 
 void	rr(t_stack *stack)
 {
-	printf("\033[1;31m");
-	printf("start of rr\n\n");
-	printf("\033[0m");
 	ra(stack);
 	rb(stack);
-	printf("\033[1;31m");
-	printf("end of rr\n\n");
-	printf("\033[0m");
+	ft_printf("rr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/12 16:58:06 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:21:17 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,42 +59,41 @@ void	numto_a(char **av, t_stack *stack)
 		x_a++;
 	}
 	stack->a = num;
-	print_test(stack, "a at start", "b at start");
+	// print_test(stack, "a at start", "b at start");
 }
 
-void	print_test(t_stack *stack, char *where_a, char *where_b)
-{
-	int	y;
+// void	print_test(t_stack *stack, char *where_a, char *where_b)
+// {
+// 	int	y;
 
-	y = 0;
-	while (y < stack->a_count)
-	{
-		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
-	}
-	printf("\n\n");
-	y = 0;
-	while (y < stack->b_count)
-	{
-		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
-	}
-	printf("\n\n");
-}
+// 	y = 0;
+// 	while (y < stack->a_count)
+// 	{
+// 		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
+// 	}
+// 	printf("\n\n");
+// 	y = 0;
+// 	while (y < stack->b_count)
+// 	{
+// 		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
+// 	}
+// 	printf("\n\n");
+// }
 
 int	main(int ac, char **av)
 {
 	t_stack	stack;
 
 	stack.b_count = 0;
-	stack.run_num = 1;
-	stack.run_set = 0;
+	stack.run_num = 0;
+	stack.run_set = 1;
 	if (ac < 2)
 		ft_printf("Arguments is less than 2\n");
 	alnum_filter(av, &stack);
 	numto_a(av, &stack);
 	dup_check(&stack);
 	num_check(av, &stack);
-	print_test(&stack, "a at the end", "b at the end");
+	// print_test(&stack, "a at the end", "b at the end");
 	free(stack.a);
-	free(stack.b);
 	// system("leaks push_swap");
 }

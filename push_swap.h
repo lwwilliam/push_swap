@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/12 16:57:02 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:18:47 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ void	num_check(char **av, t_stack *stack);
 void	num_check2(char **av, t_stack *stack);
 void	check(t_stack *stack);
 void	t_num_a(t_stack *stack);
+void	t_num_b(t_stack *stack);
 void	two_num(t_stack *stack, char a_b);
 void	arr_dup(t_stack *stack, char a_b);
 void	sort(t_stack *stack, char a_b, char num);
 void	med(t_stack *stack, char a_b);
 void	pushing(t_stack *stack, char a_b);
+void	last(t_stack *stack);
 
-void	print_test(t_stack *stack, char *where_a, char *where_b);
+// void	print_test(t_stack *stack, char *where_a, char *where_b);
 
 #endif

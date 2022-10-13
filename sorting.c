@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/12 14:13:38 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:19:33 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	sort(t_stack *stack, char a_b, char num)
 	int	i;
 	int	j;
 	int	min;
-	int	x;
 
 	i = 0;
 	j = 0;
@@ -66,12 +65,6 @@ void	sort(t_stack *stack, char a_b, char num)
 		swap(&stack->tmp_arr[min], &stack->tmp_arr[i]);
 		i++;
 	}
-	x = 0;
-	while (x < stack->arr_count && num == '1')
-	{
-		printf("tmp_arr %d\n", stack->tmp_arr[x]);
-		x++;
-	}
 	if (num == '1')
 		med(stack, a_b);
 }
@@ -84,7 +77,6 @@ void	med(t_stack *stack, char a_b)
 	if (stack->med_pos == 0)
 		stack->med_pos = stack->arr_count / 2;
 	stack->median = stack->tmp_arr[stack->med_pos];
-	printf(" \033[1;31m median %d   \033[0m\n", stack->median);
 	pushing(stack, a_b);
 }
 

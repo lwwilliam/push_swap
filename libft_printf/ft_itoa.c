@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:14:10 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/06/06 15:03:56 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:19:46 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,3 @@ char	*ft_itoa(int n)
 	}
 	return (num);
 }
-
-// int main(void)
-// {
-// 	printf("%s\n", ft_itoa(-2147483648));
-// }

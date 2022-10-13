@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/12 15:00:32 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:10:13 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,26 @@ void	t_num_a(t_stack *stack)
 		if (stack->a[1] < stack->a[0])
 			sa(stack);
 	}
-	// if (stack->b_count == 0)
-	// 	exit(0);
+}
+
+void	t_num_b(t_stack *stack)
+{
+	int	x;
+
+	x = 3;
+	if (stack->b[1] > stack->b[0])
+		sb(stack);
+	if (stack->b[2] > stack->b[1])
+	{
+		pa(stack);
+		sb(stack);
+		pb(stack);
+		if (stack->b[1] > stack->b[0])
+			sb(stack);
+	}
+	while (x-- > 0)
+		pa(stack);
+	
 }
 
 void	two_num(t_stack *stack, char a_b)

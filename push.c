@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:29:33 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/10 12:39:14 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:25:24 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	pb(t_stack *stack)
 		stack->b[0] = stack->a[0];
 		move_a_up(stack);
 	}
-	print_test(stack, "a after pb", "b after pb");
+	ft_printf("pb\n");
+	// print_test(stack, "a after pb", "b after pb");
 }
 
 void	move_a_up(t_stack *stack)
@@ -72,7 +73,8 @@ void	pa(t_stack *stack)
 		stack->a[0] = stack->b[0];
 		move_b_up(stack);
 	}
-	print_test(stack, "a after pa", "b after pa");
+	ft_printf("pa\n");
+	// print_test(stack, "a after pa", "b after pa");
 }
 
 void	move_b_up(t_stack *stack)

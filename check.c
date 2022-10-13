@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/12 18:31:04 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:15:52 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	check(t_stack *stack)
 	free(stack->tmp_arr);
 	stack->arr_count = tmp;
 	if (x == stack->a_count && r_w == 0 && stack->b_count == 0)
+	{
+		ft_printf("sorted\n");
 		exit(0);
+	}
 }
 
 void	dup_check(t_stack *stack)
@@ -73,14 +76,13 @@ void	num_check(char **av, t_stack *stack)
 		aft = ft_atoi(av[x]);
 		if (aft - bfr < 0)
 		{
-			if (stack->a_count <= 5)
+			if (stack->a_count < 5)
 			{
 				if (stack->a_count == 3)
 					t_num_a(stack);
 				if (stack->a_count == 2)
 					two_num(stack, 'a');
 			}
-			check(stack);
 			num_check2(av, stack);
 		}
 	}
@@ -88,63 +90,71 @@ void	num_check(char **av, t_stack *stack)
 
 void	num_check2(char **av, t_stack *stack)
 {
-	int	tmp;
+	int	x;
+	int tmp;
 
-	tmp = 0;
-	if (stack->run_num > 1)
-		printf("\033[1;31mrun %d\033[0m\n", stack->run_num);
-	sort(stack, 'a', '1');
-	while (stack->a_count > 3 && stack->run_set == 0)
+	x = 0;
+	tmp = stack->a_count - 5;
+	while (stack->a_count > 5 && stack->run_num == 0)
 	{
+		stack->arr_count = stack->a_count;
+		sort(stack, 'a', '0');
+		while (x < stack->arr_count)
+		{
+			if (stack->a[0] < stack->tmp_arr[tmp])
+				pb(stack);
+			else
+				ra(stack);
+			x++;
+		}
+		free(stack->tmp_arr);
+		stack->arr_count = 5;
 		sort(stack, 'a', '1');
-	}
-	if (stack->a_count == 3 || stack->run_set == 1)
-	{
-		tmp = stack->a_count - stack->arr_count;
-		while (tmp-- > 0 && stack->run_set == 1)
-		{
-			ra(stack);
-		}
 		t_num_a(stack);
-	}
-	two_num(stack, 'a');
-	two_num(stack, 'b');
-	check(stack);
-	tmp = stack->b_count - stack->arr_count;
-	if (stack->b_count > 1)
-		sort(stack, 'b', '1');
-	t_num_a(stack);
-	if (stack->run_num > 1)
-	{
-		t_num_a(stack);
-		two_num(stack, 'a');
 		two_num(stack, 'b');
-		if (stack->b_count > 0)
+	}
+	x = 0;
+	stack->run_num = 1;
+	tmp = stack->b_count - 5;
+	while (stack->b_count >= 5)
+	{
+		stack->arr_count = stack->b_count;
+		sort(stack, 'b', '0');
+		while (x < stack->arr_count)
 		{
-			pa(stack);
-			t_num_a(stack);
+			if (stack->b[0] >= stack->tmp_arr[tmp])
+				pa(stack);
+			else
+				rb(stack);
+			x++;
 		}
+		free(stack->tmp_arr);
+		stack->arr_count = 5;
+		sort(stack, 'a', '1');
+		tmp = 5 * stack->run_set;
+		while (tmp-- > 0)
+			ra(stack);
+		t_num_a(stack);
+		two_num(stack, 'b');
+		stack->run_set++;
+		num_check2(av, stack);
 	}
-	if (stack->run_num == 4)
-	{
-		stack->run_num++;
-		stack->run_set = 0;
-	}
-	if (stack->run_num > 1)
-	{
-		stack->run_num++;
-		check(stack);
-		num_check(av, stack);
-	}
-	while (tmp-- > 0)
-		rb(stack);
-	two_num(stack, 'a');
-	two_num(stack, 'b');
+	last(stack);
 	check(stack);
-	stack->arr_count = stack->b_count;
-	sort(stack, 'b', '1');
-	stack->run_num++;
-	stack->run_set = 1;
-	check(stack);
-	num_check(av, stack);
+}
+
+void	last(t_stack *stack)
+{
+	if (stack->b_count == 1)
+		pa(stack);
+	if (stack->b_count == 2)
+		two_num(stack, 'b');
+	if (stack->b_count == 3)
+		t_num_b(stack);
+	if (stack->b_count == 4)
+	{
+		sort(stack, 'b', '1');
+		two_num(stack, 'b');
+		two_num(stack, 'a');
+	}
 }
