@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/13 15:10:13 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/14 14:19:01 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	t_num_a(t_stack *stack)
 {
+	if (stack->a[2] < stack->a[0])
+		rra(stack);
 	if (stack->a[1] < stack->a[0])
 		sa(stack);
 	if (stack->a[2] < stack->a[1])
@@ -21,6 +23,7 @@ void	t_num_a(t_stack *stack)
 		pb(stack);
 		sa(stack);
 		pa(stack);
+		printf("%d\n", stack->a[0]);
 		if (stack->a[1] < stack->a[0])
 			sa(stack);
 	}
@@ -43,7 +46,6 @@ void	t_num_b(t_stack *stack)
 	}
 	while (x-- > 0)
 		pa(stack);
-	
 }
 
 void	two_num(t_stack *stack, char a_b)
@@ -63,8 +65,8 @@ void	two_num(t_stack *stack, char a_b)
 		pa(stack);
 		pa(stack);
 		stack->arr_count += 2;
-		free(stack->tmp_arr);
 	}
+	free(stack->tmp_arr);
 }
 //(top == 1) = the first two number;
 
@@ -85,4 +87,20 @@ int	first_two(t_stack *stack)
 		return (1);
 	else
 		return (0);
+}
+
+void	last(t_stack *stack)
+{
+	if (stack->b_count == 1)
+		pa(stack);
+	if (stack->b_count == 2)
+		two_num(stack, 'b');
+	if (stack->b_count == 3)
+		t_num_b(stack);
+	if (stack->b_count == 4)
+	{
+		sort(stack, 'b', '1');
+		two_num(stack, 'a');
+		two_num(stack, 'b');
+	}
 }

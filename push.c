@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:29:33 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/13 15:25:24 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/14 14:26:27 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,23 @@ void	pb(t_stack *stack)
 
 	if (stack->b_count == 0)
 	{
-		stack->b[0] = stack->a[0];
+		stack->b[stack->b_count] = stack->a[stack->a_count];
 		stack->b_count += 1;
-		move_a_up(stack);
+		// move_a_up(stack);
 	}
-	else
-	{
-		tmp = stack->b_count;
-		while (tmp >= 0)
-		{
-			stack->b[tmp + 1] = stack->b[tmp];
-			tmp--;
-		}
-		stack->b_count += 1;
-		stack->b[0] = stack->a[0];
-		move_a_up(stack);
-	}
+	// else
+	// {
+	// 	tmp = stack->b_count;
+	// 	while (tmp >= 0)
+	// 	{
+	// 		stack->b[tmp + 1] = stack->b[tmp];
+	// 		tmp--;
+	// 	}
+	// 	stack->b_count += 1;
+	// 	stack->b[0] = stack->a[0];
+	// 	move_a_up(stack);
+	// }
 	ft_printf("pb\n");
-	// print_test(stack, "a after pb", "b after pb");
 }
 
 void	move_a_up(t_stack *stack)
@@ -74,7 +73,6 @@ void	pa(t_stack *stack)
 		move_b_up(stack);
 	}
 	ft_printf("pa\n");
-	// print_test(stack, "a after pa", "b after pa");
 }
 
 void	move_b_up(t_stack *stack)
