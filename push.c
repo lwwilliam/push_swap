@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:29:33 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/14 14:26:27 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/16 16:53:25 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	pb(t_stack *stack)
 	else
 	{
 		tmp = stack->b_count;
-		while (tmp > 0)
+		while (tmp >= 0)
 		{
 			stack->b[tmp + 1] = stack->b[tmp];
 			tmp--;
