@@ -18,22 +18,22 @@ void	pb(t_stack *stack)
 
 	if (stack->b_count == 0)
 	{
-		stack->b[stack->b_count] = stack->a[stack->a_count];
+		stack->b[0] = stack->a[0];
 		stack->b_count += 1;
-		// move_a_up(stack);
+		move_a_up(stack);
 	}
-	// else
-	// {
-	// 	tmp = stack->b_count;
-	// 	while (tmp >= 0)
-	// 	{
-	// 		stack->b[tmp + 1] = stack->b[tmp];
-	// 		tmp--;
-	// 	}
-	// 	stack->b_count += 1;
-	// 	stack->b[0] = stack->a[0];
-	// 	move_a_up(stack);
-	// }
+	else
+	{
+		tmp = stack->b_count;
+		while (tmp > 0)
+		{
+			stack->b[tmp + 1] = stack->b[tmp];
+			tmp--;
+		}
+		stack->b_count += 1;
+		stack->b[0] = stack->a[0];
+		move_a_up(stack);
+	}
 	ft_printf("pb\n");
 }
 
