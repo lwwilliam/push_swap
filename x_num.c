@@ -6,24 +6,25 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/14 14:19:01 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:22:36 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	t_num_a(t_stack *stack)
+void	t_num_a(t_stack *stack, int tmp)
 {
-	if (stack->a[2] < stack->a[0])
-		rra(stack);
+	if (stack->a[0] > stack->a[2] && stack->a[1] < stack->a[2])
+		ra(stack);
 	if (stack->a[1] < stack->a[0])
 		sa(stack);
+	if (stack->a[2] < stack->a[0] && tmp == 0)
+		rra(stack);
 	if (stack->a[2] < stack->a[1])
 	{
 		pb(stack);
 		sa(stack);
 		pa(stack);
-		printf("%d\n", stack->a[0]);
 		if (stack->a[1] < stack->a[0])
 			sa(stack);
 	}
@@ -100,6 +101,14 @@ void	last(t_stack *stack)
 	if (stack->b_count == 4)
 	{
 		sort(stack, 'b', '1');
+		two_num(stack, 'a');
+		two_num(stack, 'b');
+	}
+	if (stack->a_count == 5 || stack->a_count == 4)
+	{
+		sort(stack, 'a', '1');
+		if (stack->a_count == 3)
+			t_num_a(stack, 1);
 		two_num(stack, 'a');
 		two_num(stack, 'b');
 	}

@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/16 16:55:12 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/26 19:32:34 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	alt_f4(t_stack *stack)
 {
 	(void)stack;
-
-	write(2, "Error\n", 6);
+	write(2, "Erro1\n", 6);
 	exit(0);
 }
 
@@ -85,21 +84,51 @@ void	dup_check(t_stack *stack)
 	}
 }
 
+void	print_test(t_stack *stack, char *where_a, char *where_b)
+{
+	int	y;
+
+	y = 0;
+	while (y < stack->a_count)
+	{
+		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
+	}
+	printf("\n\n");
+	y = 0;
+	while (y < stack->b_count)
+	{
+		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
+	}
+	printf("\n\n");
+}
+
+
 int	main(int ac, char **av)
 {
 	t_stack	stack;
+	char	**tmp;
+	char	**arr;
+	int		y;
+	int		x;
 
+	tmp = malloc(sizeof(char) * (900 * 900));
 	stack.b_count = 0;
 	stack.run_num = 0;
 	stack.run_set = 1;
-	if (ac <= 2)
+	if (ac == 2)
 	{
-		exit(0);
+		y = 1;
+		x = 0;
+		arr = ft_split(av[1], ' ');
+		while (arr[x])
+			tmp[y++] = arr[x++];
 	}
-	alnum_filter(av, &stack);
-	numto_a(av, &stack);
+	else
+		tmp = av;
+	alnum_filter(tmp, &stack);
+	numto_a(tmp, &stack);
 	dup_check(&stack);
-	num_check(av, &stack);
-	check(av, &stack);
+	num_check(tmp, &stack);
+	check(tmp, &stack);
 	free(stack.a);
 }

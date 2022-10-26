@@ -6,7 +6,7 @@
 #    By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 18:10:19 by lwilliam          #+#    #+#              #
-#    Updated: 2022/10/14 12:45:42 by lwilliam         ###   ########.fr        #
+#    Updated: 2022/10/26 18:19:02 by lwilliam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,4 +41,4 @@ fclean : clean
 re : fclean all
 	make re -C libft_printf
 
-# .PHONY : $(NAME)
+.PHONY : $(NAME)

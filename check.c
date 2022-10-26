@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/14 13:17:38 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:32:57 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ void	check(char **av, t_stack *stack)
 	stack->arr_count = tmp;
 	if (x != stack->a_count && r_w != 0 && stack->b_count != 0)
 		num_check(av, stack);
+	else
+		print_test(stack, "a at end", "b at end");
 }
 
 void	num_check(char **av, t_stack *stack)
 {
-	int		bfr;
-	int		aft;
+	long	bfr;
+	long	aft;
 	int		x;
 
 	x = 1;
@@ -51,13 +53,13 @@ void	num_check(char **av, t_stack *stack)
 		aft = ft_atoi(av[x]);
 		if (aft - bfr < 0)
 		{
-			if (stack->a_count < 5)
+			if (stack->a_count == 3)
 			{
-				if (stack->a_count == 3)
-					t_num_a(stack);
-				if (stack->a_count == 2)
-					two_num(stack, 'a');
+				t_num_a(stack, 0);
 			}
+			if (stack->a_count == 2)
+				two_num(stack, 'a');
+			last(stack);
 			num_check2(stack);
 		}
 	}
@@ -85,7 +87,7 @@ void	num_check2(t_stack *stack)
 		free(stack->tmp_arr);
 		stack->arr_count = 5;
 		sort(stack, 'a', '1');
-		t_num_a(stack);
+		t_num_a(stack, 1);
 		two_num(stack, 'b');
 	}
 	num_check3(x, tmp, stack);
@@ -113,7 +115,7 @@ void	num_check3(int x, int tmp, t_stack *stack)
 		stack->arr_count = 5;
 		sort(stack, 'a', '1');
 		rotating(stack);
-		t_num_a(stack);
+		t_num_a(stack, 1);
 		two_num(stack, 'b');
 		stack->run_set++;
 		num_check2(stack);
