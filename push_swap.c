@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/26 19:32:34 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/27 10:50:07 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	alt_f4(t_stack *stack)
 {
 	(void)stack;
-	write(2, "Erro1\n", 6);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
@@ -27,12 +27,15 @@ void	alnum_filter(char **av, t_stack *stack)
 	char	tmp;
 
 	x = 0;
+	stack->b_count = 0;
+	stack->run_num = 0;
+	stack->run_set = 1;
 	while (av[++x])
 	{
 		num = ft_atoi(av[x]);
 		if (num > 2147483647 || num < -2147483648)
 			alt_f4(stack);
-		y = 0;
+		y = (av[x][0] == '-' && ft_strlen(av[x]) > 1);
 		while (av[x][y])
 		{
 			tmp = av[x][y++];
@@ -84,24 +87,23 @@ void	dup_check(t_stack *stack)
 	}
 }
 
-void	print_test(t_stack *stack, char *where_a, char *where_b)
-{
-	int	y;
+// void	print_test(t_stack *stack, char *where_a, char *where_b)
+// {
+// 	int	y;
 
-	y = 0;
-	while (y < stack->a_count)
-	{
-		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
-	}
-	printf("\n\n");
-	y = 0;
-	while (y < stack->b_count)
-	{
-		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
-	}
-	printf("\n\n");
-}
-
+// 	y = 0;
+// 	while (y < stack->a_count)
+// 	{
+// 		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
+// 	}
+// 	printf("\n\n");
+// 	y = 0;
+// 	while (y < stack->b_count)
+// 	{
+// 		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
+// 	}
+// 	printf("\n\n");
+// }
 
 int	main(int ac, char **av)
 {
@@ -112,9 +114,6 @@ int	main(int ac, char **av)
 	int		x;
 
 	tmp = malloc(sizeof(char) * (900 * 900));
-	stack.b_count = 0;
-	stack.run_num = 0;
-	stack.run_set = 1;
 	if (ac == 2)
 	{
 		y = 1;

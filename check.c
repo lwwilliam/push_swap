@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/26 18:32:57 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/10/27 11:08:21 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check(char **av, t_stack *stack)
 	if (x != stack->a_count && r_w != 0 && stack->b_count != 0)
 		num_check(av, stack);
 	else
-		print_test(stack, "a at end", "b at end");
+		exit(0);
 }
 
 void	num_check(char **av, t_stack *stack)
@@ -53,13 +53,15 @@ void	num_check(char **av, t_stack *stack)
 		aft = ft_atoi(av[x]);
 		if (aft - bfr < 0)
 		{
-			if (stack->a_count == 3)
+			if (stack->a_count <= 5)
 			{
-				t_num_a(stack, 0);
+				if (stack->a_count == 3)
+					t_num_a(stack, 0);
+				if (stack->a_count == 2)
+					two_num(stack, 'a');
+				last(stack);
+				check(av, stack);
 			}
-			if (stack->a_count == 2)
-				two_num(stack, 'a');
-			last(stack);
 			num_check2(stack);
 		}
 	}
@@ -126,7 +128,7 @@ void	rotating(t_stack *stack)
 {
 	int	tmp;
 
-	tmp = 5 * stack->run_set;
+	tmp = stack->a_count - (5 * stack->run_set);
 	while (tmp-- > 0)
-		ra(stack);
+		rra(stack);
 }
