@@ -6,13 +6,13 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/12 18:31:04 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:02:17 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check(t_stack *stack)
+void	check(char **av, t_stack *stack)
 {
 	int	tmp;
 	int	x;
@@ -33,6 +33,9 @@ void	check(t_stack *stack)
 	}
 	free(stack->tmp_arr);
 	stack->arr_count = tmp;
+	// if (x != stack->a_count || r_w != 0 || stack->b_count != 0)
+	// 	num_check(av, stack);
+	// else
 	if (x == stack->a_count && r_w == 0 && stack->b_count == 0)
 		exit(0);
 }
@@ -50,7 +53,7 @@ void	dup_check(t_stack *stack)
 		{
 			if (stack->a[x] - stack->a[y] == 0)
 			{
-				ft_printf("ERROR! Duplicated number = %d\n", stack->a[y]);
+				write(2, "Error\n", 6);
 				exit(0);
 			}
 			y++;
@@ -76,11 +79,12 @@ void	num_check(char **av, t_stack *stack)
 			if (stack->a_count <= 5)
 			{
 				if (stack->a_count == 3)
-					t_num_a(stack);
+					t_num_a(stack, 1);
 				if (stack->a_count == 2)
 					two_num(stack, 'a');
+				last(stack);
+				check(av, stack);
 			}
-			check(stack);
 			num_check2(av, stack);
 		}
 	}
@@ -89,62 +93,68 @@ void	num_check(char **av, t_stack *stack)
 void	num_check2(char **av, t_stack *stack)
 {
 	int	tmp;
+	int	x;
 
 	tmp = 0;
-	if (stack->run_num > 1)
-		printf("\033[1;31mrun %d\033[0m\n", stack->run_num);
-	sort(stack, 'a', '1');
-	while (stack->a_count > 3 && stack->run_set == 0)
-	{
+	x = 2;
+	while (stack->a_count > 3)
 		sort(stack, 'a', '1');
-	}
-	if (stack->a_count == 3 || stack->run_set == 1)
-	{
-		tmp = stack->a_count - stack->arr_count;
-		while (tmp-- > 0 && stack->run_set == 1)
-		{
-			ra(stack);
-		}
-		t_num_a(stack);
-	}
-	two_num(stack, 'a');
-	two_num(stack, 'b');
-	check(stack);
-	tmp = stack->b_count - stack->arr_count;
-	if (stack->b_count > 1)
-		sort(stack, 'b', '1');
-	t_num_a(stack);
-	if (stack->run_num > 1)
-	{
-		t_num_a(stack);
+	if (stack->a_count == 3)
+		t_num_a(stack, 0);
+	if (stack->a_count == 2)
 		two_num(stack, 'a');
-		two_num(stack, 'b');
-		if (stack->b_count > 0)
-		{
-			pa(stack);
-			t_num_a(stack);
-		}
-	}
-	if (stack->run_num == 4)
-	{
-		stack->run_num++;
-		stack->run_set = 0;
-	}
-	if (stack->run_num > 1)
-	{
-		stack->run_num++;
-		check(stack);
-		num_check(av, stack);
-	}
-	while (tmp-- > 0)
-		rb(stack);
-	two_num(stack, 'a');
 	two_num(stack, 'b');
-	check(stack);
-	stack->arr_count = stack->b_count;
+	tmp = stack->arr_count;
 	sort(stack, 'b', '1');
-	stack->run_num++;
-	stack->run_set = 1;
-	check(stack);
-	num_check(av, stack);
+	t_num_a(stack, 1);
+	rotate(stack, 'b', tmp - stack->arr_count);
+	two_num(stack, 'b');
+	stack->arr_count = stack->b_count;
+	num_check3(av, stack);
+	exit(0);
+}
+
+void	num_check3(char **av, t_stack *stack)
+{
+	int	tmp;
+
+	tmp = stack->arr_count;
+	// if (stack->tmp_arr_count == 3)
+	// 	exit(0);
+	check(av, stack);
+	printf("here3?\n");
+	sort(stack, 'b', '1');
+	t_num_a(stack, 1);
+	while (stack->arr_count >= 5)
+	{
+		printf("test1 %d\n", stack->arr_count);
+		sort(stack, 'a', '1');
+		printf("test2 %d\n", stack->arr_count);
+		t_num_a(stack, 1);
+		rotate(stack, 'a', stack->arr_count);
+		printf("here1?\n");
+	}
+	printf("here2?\n");
+	x_num(stack, 'a', 5);
+	last(stack);
+	stack->arr_count = tmp - stack->arr_count;
+	stack->tmp_arr_count++;
+	num_check3(av, stack);
+}
+
+void	rotate(t_stack *stack, char a_b, int x)
+{
+	int	tmp;
+
+	tmp = x;
+	while (tmp > 0 && a_b == 'b')
+	{
+		rrb(stack);
+		tmp--;
+	}
+	while (tmp > 0 && a_b == 'a')
+	{
+		rra(stack);
+		tmp--;
+	}
 }

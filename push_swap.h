@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/12 16:57:02 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:37:38 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_stack
 
 }	t_stack;
 
-void	alt_f4(char *msg);
+void	alt_f4(t_stack *stack);
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
 void	ss(t_stack *stack);
@@ -53,13 +53,18 @@ void	dup_check(t_stack *stack);
 int		first_two(t_stack *stack);
 void	num_check(char **av, t_stack *stack);
 void	num_check2(char **av, t_stack *stack);
-void	check(t_stack *stack);
-void	t_num_a(t_stack *stack);
+void	num_check3(char **av, t_stack *stack);
+void	check(char **av, t_stack *stack);
+void	t_num_a(t_stack *stack, int tmp);
+void	t_num_b(t_stack *stack);
 void	two_num(t_stack *stack, char a_b);
+void	last(t_stack *stack);
 void	arr_dup(t_stack *stack, char a_b);
 void	sort(t_stack *stack, char a_b, char num);
 void	med(t_stack *stack, char a_b);
 void	pushing(t_stack *stack, char a_b);
+void	rotate(t_stack *stack, char a_b, int x);
+void	x_num(t_stack *stack, char a_b, int count);
 
 void	print_test(t_stack *stack, char *where_a, char *where_b);
 
