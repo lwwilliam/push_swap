@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/10/27 17:27:11 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/02 11:34:51 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	main(int ac, char **av)
 	int		x;
 
 	tmp = malloc(sizeof(char) * (900 * 900));
+	if (ac == 1)
+		alt_f4(&stack);
 	if (ac == 2)
 	{
 		y = 1;

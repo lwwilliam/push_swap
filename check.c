@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/01 19:02:17 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/02 11:33:50 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	num_check2(char **av, t_stack *stack)
 	if (stack->a_count == 2)
 		two_num(stack, 'a');
 	two_num(stack, 'b');
+	if (stack->arr_count > stack->b_count)
+		stack->arr_count = stack->b_count;
 	tmp = stack->arr_count;
 	sort(stack, 'b', '1');
 	t_num_a(stack, 1);
@@ -111,31 +113,25 @@ void	num_check2(char **av, t_stack *stack)
 	two_num(stack, 'b');
 	stack->arr_count = stack->b_count;
 	num_check3(av, stack);
-	exit(0);
 }
 
 void	num_check3(char **av, t_stack *stack)
 {
 	int	tmp;
+	int	x;
 
 	tmp = stack->arr_count;
-	// if (stack->tmp_arr_count == 3)
-	// 	exit(0);
 	check(av, stack);
-	printf("here3?\n");
 	sort(stack, 'b', '1');
 	t_num_a(stack, 1);
 	while (stack->arr_count >= 5)
 	{
-		printf("test1 %d\n", stack->arr_count);
 		sort(stack, 'a', '1');
-		printf("test2 %d\n", stack->arr_count);
 		t_num_a(stack, 1);
 		rotate(stack, 'a', stack->arr_count);
-		printf("here1?\n");
 	}
-	printf("here2?\n");
-	x_num(stack, 'a', 5);
+	x = stack->arr_count;
+	x_num(stack, 'a', x);
 	last(stack);
 	stack->arr_count = tmp - stack->arr_count;
 	stack->tmp_arr_count++;

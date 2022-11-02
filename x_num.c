@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/01 18:57:53 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/02 11:20:49 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ void	x_num(t_stack *stack, char a_b, int count)
 		t_num_a(stack, '1');
 	if ((count == 5 || count == 4) && a_b == 'a')
 	{
-		printf("%d\n", stack->arr_count);
 		sort(stack, 'a', '1');
 		rotate(stack, 'a', 2);
 		if (count == 5)
