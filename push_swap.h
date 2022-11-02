@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 11:34:30 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/02 11:45:07 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void	pushing(t_stack *stack, char a_b);
 void	rotate(t_stack *stack, char a_b, int x);
 void	x_num(t_stack *stack, char a_b, int count);
 
-// void	print_test(t_stack *stack, char *where_a, char *where_b);
+void	print_test(t_stack *stack, char *where_a, char *where_b);
 
 #endif

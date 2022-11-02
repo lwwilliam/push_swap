@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 11:34:51 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/02 12:04:12 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,26 +63,26 @@ void	numto_a(char **av, t_stack *stack)
 		x_a++;
 	}
 	stack->a = num;
-	print_test(stack, "a at start", "b at start");
+	// print_test(stack, "a at start", "b at start");
 }
 
-void	print_test(t_stack *stack, char *where_a, char *where_b)
-{
-	int	y;
+// void	print_test(t_stack *stack, char *where_a, char *where_b)
+// {
+// 	int	y;
 
-	y = 0;
-	while (y < stack->a_count)
-	{
-		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
-	}
-	printf("\n\n");
-	y = 0;
-	while (y < stack->b_count)
-	{
-		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
-	}
-	printf("\n\n");
-}
+// 	y = 0;
+// 	while (y < stack->a_count)
+// 	{
+// 		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
+// 	}
+// 	printf("\n\n");
+// 	y = 0;
+// 	while (y < stack->b_count)
+// 	{
+// 		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
+// 	}
+// 	printf("\n\n");
+// }
 
 int	main(int ac, char **av)
 {

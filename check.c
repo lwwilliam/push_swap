@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 11:33:50 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/02 12:14:20 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	num_check(char **av, t_stack *stack)
 		bfr = ft_atoi(av[x]);
 		x++;
 		aft = ft_atoi(av[x]);
-		if (aft - bfr < 0)
+		if (aft - bfr < 0 || (aft < 0 && bfr > 0))
 		{
 			if (stack->a_count <= 5)
 			{
 				if (stack->a_count == 3)
-					t_num_a(stack, 1);
+					t_num_a(stack, 0);
 				if (stack->a_count == 2)
 					two_num(stack, 'a');
 				last(stack);
