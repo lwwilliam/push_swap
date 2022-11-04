@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 00:17:08 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 02:34:55 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	quick_sort_a(char **av, t_stack *stack, int len);
 void	quick_sort_b(char **av, t_stack *stack, int len);
 void	free_funct(char **av);
 
-void	print_test(t_stack *stack, char *where_a, char *where_b);
+// void	print_test(t_stack *stack, char *where_a, char *where_b);
 
 #endif

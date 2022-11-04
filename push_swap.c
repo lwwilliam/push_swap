@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 00:11:02 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 02:35:07 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,30 +57,28 @@ void	numto_a(char **av, t_stack *stack)
 		x_a++;
 	}
 	stack->a = num;
-	free(num);
 }
 
-void	print_test(t_stack *stack, char *where_a, char *where_b)
-{
-	int	y;
+// void	print_test(t_stack *stack, char *where_a, char *where_b)
+// {
+// 	int	y;
 
-	y = 0;
-	while (y < stack->a_count)
-	{
-		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
-	}
-	printf("\nlen: %d Array= %d \n\n", stack->a_count, stack->tmp_arr_count);
-	y = 0;
-	while (y < stack->b_count)
-	{
-		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
-	}
-	printf("\nlen: %d Array= %d\n\n", stack->b_count, stack->tmp_arr_count);
-}
+// 	y = 0;
+// 	while (y < stack->a_count)
+// 	{
+// 		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
+// 	}
+// 	printf("\nlen: %d Array= %d \n\n", stack->a_count, stack->tmp_arr_count);
+// 	y = 0;
+// 	while (y < stack->b_count)
+// 	{
+// 		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
+// 	}
+// 	printf("\nlen: %d Array= %d\n\n", stack->b_count, stack->tmp_arr_count);
+// }
 
 void	free_funct(char **av)
 {
-	t_stack	stack;
 	char	**tmp;
 
 	tmp = av;
@@ -91,9 +89,6 @@ void	free_funct(char **av)
 		tmp++;
 	}
 	free(av);
-	free(stack.tmp_arr);
-	free(stack.b);
-	free(stack.a);
 }
 
 int	main(int ac, char **av)

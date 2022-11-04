@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:39:51 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 00:13:08 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 02:27:42 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	rra(t_stack *stack)
 		tmp--;
 	}
 	stack->a[0] = last;
-	ft_printf("rra\n");
+	ft_printf("rra ");
 }
 
 void	rrb(t_stack *stack)
@@ -41,7 +41,7 @@ void	rrb(t_stack *stack)
 		tmp--;
 	}
 	stack->b[0] = last;
-	ft_printf("rrb\n");
+	ft_printf("rrb ");
 }
 
 void	rrr(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 00:48:32 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 02:34:36 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ int	check(char **av, t_stack *stack, int len, int ac)
 		}
 		x++;
 	}
+	free(stack->tmp_arr);
+	free(stack->b);
+	free(stack->a);
 	if (x == stack->a_count && r_w == 0 && stack->b_count == 0)
 	{
-		print_test(stack, "rauwyf", "diuadh");
+		printf("\n");
 		if (ac < 3)
 			free_funct(av);
 		exit(0);
