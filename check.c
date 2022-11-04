@@ -6,23 +6,21 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 12:14:20 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 00:48:32 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check(char **av, t_stack *stack)
+int	check(char **av, t_stack *stack, int len, int ac)
 {
-	int	tmp;
 	int	x;
 	int	r_w;
 
 	x = 0;
 	r_w = 0;
-	tmp = stack->arr_count;
-	stack->arr_count = stack->a_count;
-	sort(stack, 'a', '0');
+	len = stack->a_count;
+	median(stack, 'a', '0', len);
 	while (x != stack->a_count && r_w == 0)
 	{
 		if (stack->a[x] != stack->tmp_arr[x])
@@ -31,13 +29,16 @@ void	check(char **av, t_stack *stack)
 		}
 		x++;
 	}
-	free(stack->tmp_arr);
-	stack->arr_count = tmp;
-	// if (x != stack->a_count || r_w != 0 || stack->b_count != 0)
-	// 	num_check(av, stack);
-	// else
 	if (x == stack->a_count && r_w == 0 && stack->b_count == 0)
+	{
+		print_test(stack, "rauwyf", "diuadh");
+		if (ac < 3)
+			free_funct(av);
 		exit(0);
+	}
+	else if (x == stack->a_count && r_w == 0)
+		return (1);
+	return (0);
 }
 
 void	dup_check(t_stack *stack)
@@ -62,13 +63,16 @@ void	dup_check(t_stack *stack)
 	}
 }
 
-void	num_check(char **av, t_stack *stack)
+void	num_check(char **av, t_stack *stack, int ac)
 {
 	int		bfr;
 	int		aft;
 	int		x;
+	int		len;
 
 	x = 1;
+	len = stack->arr_count;
+	stack->tmp_arr_count = 0;
 	while (av[x + 1])
 	{
 		bfr = ft_atoi(av[x]);
@@ -78,79 +82,52 @@ void	num_check(char **av, t_stack *stack)
 		{
 			if (stack->a_count <= 5)
 			{
-				if (stack->a_count == 3)
-					t_num_a(stack, 0);
-				if (stack->a_count == 2)
-					two_num(stack, 'a');
 				last(stack);
-				check(av, stack);
+				check(av, stack, stack->a_count, ac);
 			}
-			num_check2(av, stack);
+			stack->error = 1;
 		}
 	}
+	if (stack->error == 1)
+		quick_sort_a(av, stack, len);
 }
 
-void	num_check2(char **av, t_stack *stack)
+void	quick_sort_a(char **av, t_stack *stack, int len)
 {
-	int	tmp;
-	int	x;
-
-	tmp = 0;
-	x = 2;
-	while (stack->a_count > 3)
-		sort(stack, 'a', '1');
-	if (stack->a_count == 3)
-		t_num_a(stack, 0);
-	if (stack->a_count == 2)
+	median(stack, 'a', '1', len);
+	if (len == 2)
 		two_num(stack, 'a');
-	two_num(stack, 'b');
-	if (stack->arr_count > stack->b_count)
-		stack->arr_count = stack->b_count;
-	tmp = stack->arr_count;
-	sort(stack, 'b', '1');
-	t_num_a(stack, 1);
-	rotate(stack, 'b', tmp - stack->arr_count);
-	two_num(stack, 'b');
-	stack->arr_count = stack->b_count;
-	num_check3(av, stack);
-}
-
-void	num_check3(char **av, t_stack *stack)
-{
-	int	tmp;
-	int	x;
-
-	tmp = stack->arr_count;
-	check(av, stack);
-	sort(stack, 'b', '1');
-	t_num_a(stack, 1);
-	while (stack->arr_count >= 5)
-	{
-		sort(stack, 'a', '1');
+	if (len == 3)
 		t_num_a(stack, 1);
-		rotate(stack, 'a', stack->arr_count);
+	if (len > 3)
+	{
+		pushing(stack, 'a');
+		rotate(stack, 'a', stack->ra_count);
+		quick_sort_a(av, stack, (len / 2)
+			+ (len % 2));
+		quick_sort_b(av, stack, (len / 2));
 	}
-	x = stack->arr_count;
-	x_num(stack, 'a', x);
-	last(stack);
-	stack->arr_count = tmp - stack->arr_count;
-	stack->tmp_arr_count++;
-	num_check3(av, stack);
 }
 
-void	rotate(t_stack *stack, char a_b, int x)
+void	quick_sort_b(char **av, t_stack *stack, int len)
 {
-	int	tmp;
-
-	tmp = x;
-	while (tmp > 0 && a_b == 'b')
+	median(stack, 'b', '1', len);
+	if (len == 2)
 	{
-		rrb(stack);
-		tmp--;
+		two_num(stack, 'b');
 	}
-	while (tmp > 0 && a_b == 'a')
+	if (len == 3)
 	{
-		rra(stack);
-		tmp--;
+		t_num_b(stack);
+		pushing(stack, 'b');
+		rotate(stack, 'b', stack->rb_count);
+	}
+	if (len > 3)
+	{
+		pushing(stack, 'b');
+		rotate(stack, 'b', stack->rb_count);
+		quick_sort_a(av, stack, (len / 2)
+			+ (len % 2));
+		quick_sort_b(av, stack, (len / 2));
 	}
 }

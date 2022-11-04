@@ -22,11 +22,11 @@ FLAGS		= -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-	make printf
+	make // printf
 	gcc $(FLAGS) -c $(SRCS)
 	ar rcs $(NAME) $(OBJS)
 
-printf:
+// printf:
 	make -C ft_printf
 	cp ft_printf/libftprintf.a .
 	mv libftprintf.a $(NAME)

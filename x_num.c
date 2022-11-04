@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 12:14:53 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 00:54:54 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	t_num_a(t_stack *stack, int tmp)
 		rra(stack);
 	if (stack->a[2] < stack->a[1])
 	{
+		printf("test");
 		pb(stack);
 		sa(stack);
 		pa(stack);
@@ -51,15 +52,9 @@ void	t_num_b(t_stack *stack)
 
 void	two_num(t_stack *stack, char a_b)
 {
-	int	tmp;
-
 	if (stack->a[1] < stack->a[0] && a_b == 'a')
 		sa(stack);
-	tmp = stack->arr_count;
-	stack->arr_count = stack->b_count;
-	sort(stack, 'b', '0');
-	stack->arr_count = tmp;
-	if (a_b == 'b' && first_two(stack) == 1 && stack->b_count > 1)
+	if (a_b == 'b' && stack->b_count > 1)
 	{
 		if (stack->b[1] > stack->b[0])
 			sb(stack);
@@ -67,7 +62,6 @@ void	two_num(t_stack *stack, char a_b)
 		pa(stack);
 		stack->arr_count += 2;
 	}
-	free(stack->tmp_arr);
 }
 //(top == 1) = the first two number;
 
@@ -100,13 +94,18 @@ void	last(t_stack *stack)
 		t_num_b(stack);
 	if (stack->b_count == 4)
 	{
-		sort(stack, 'b', '1');
+		median(stack, 'b', '1', 4);
 		two_num(stack, 'a');
 		two_num(stack, 'b');
 	}
+	if (stack->a_count == 3)
+		t_num_a(stack, 0);
+	if (stack->a_count == 2)
+		two_num(stack, 'a');
 	if (stack->a_count == 5 || stack->a_count == 4)
 	{
-		sort(stack, 'a', '1');
+		median(stack, 'a', '1', stack->a_count);
+		pushing(stack, 'a');
 		if (stack->a_count == 3)
 			t_num_a(stack, 0);
 		two_num(stack, 'a');
@@ -114,34 +113,34 @@ void	last(t_stack *stack)
 	}
 }
 
-void	x_num(t_stack *stack, char a_b, int count)
-{
-	if (count == 2 && a_b == 'a')
-		two_num(stack, 'a');
-	if (count == 3 && a_b == 'a')
-		t_num_a(stack, '1');
-	if ((count == 5 || count == 4) && a_b == 'a')
-	{
-		sort(stack, 'a', '1');
-		rotate(stack, 'a', 2);
-		if (count == 5)
-		{
-			rotate(stack, 'a', 1);
-			t_num_a(stack, 0);
-		}
-		two_num(stack, 'a');
-		two_num(stack, 'b');
-	}
-	if (count == 2 && a_b == 'b')
-		two_num(stack, 'b');
-	if (count == 3 && a_b == 'b')
-		t_num_a(stack, '1');
-	if ((count == 5 || count == 4) && a_b == 'b')
-	{
-		sort(stack, 'b', '1');
-		if (count == 5)
-			t_num_b(stack);
-		two_num(stack, 'a');
-		two_num(stack, 'b');
-	}
-}
+// void	x_num(t_stack *stack, char a_b, int count)
+// {
+// 	if (count == 2 && a_b == 'a')
+// 		two_num(stack, 'a');
+// 	if (count == 3 && a_b == 'a')
+// 		t_num_a(stack, '1');
+// 	if ((count == 5 || count == 4) && a_b == 'a')
+// 	{
+// 		median(stack, 'a', '1', count);
+// 		rotate(stack, 'a', 2);
+// 		if (count == 5)
+// 		{
+// 			rotate(stack, 'a', 1);
+// 			t_num_a(stack, 0);
+// 		}
+// 		two_num(stack, 'a');
+// 		two_num(stack, 'b');
+// 	}
+// 	if (count == 2 && a_b == 'b')
+// 		two_num(stack, 'b');
+// 	if (count == 3 && a_b == 'b')
+// 		t_num_a(stack, '1');
+// 	if ((count == 5 || count == 4) && a_b == 'b')
+// 	{
+// 		median(stack, 'b', '1', count);
+// 		if (count == 5)
+// 			t_num_b(stack);
+// 		two_num(stack, 'a');
+// 		two_num(stack, 'b');
+// 	}
+// }

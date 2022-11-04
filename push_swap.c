@@ -6,18 +6,11 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 12:04:12 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 00:11:02 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	alt_f4(t_stack *stack)
-{
-	(void)stack;
-	write(2, "Error\n", 6);
-	exit(0);
-}
 
 void	alnum_filter(char **av, t_stack *stack)
 {
@@ -57,32 +50,51 @@ void	numto_a(char **av, t_stack *stack)
 	x_a = 0;
 	num = malloc(sizeof(int) * (stack->a_count + 1));
 	stack->b = malloc(sizeof(int) * (stack->a_count + 1));
+	stack->error = 0;
 	while (av[++x])
 	{
 		num[x_a] = (int)ft_atoi(av[x]);
 		x_a++;
 	}
 	stack->a = num;
-	// print_test(stack, "a at start", "b at start");
+	free(num);
 }
 
-// void	print_test(t_stack *stack, char *where_a, char *where_b)
-// {
-// 	int	y;
+void	print_test(t_stack *stack, char *where_a, char *where_b)
+{
+	int	y;
 
-// 	y = 0;
-// 	while (y < stack->a_count)
-// 	{
-// 		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
-// 	}
-// 	printf("\n\n");
-// 	y = 0;
-// 	while (y < stack->b_count)
-// 	{
-// 		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
-// 	}
-// 	printf("\n\n");
-// }
+	y = 0;
+	while (y < stack->a_count)
+	{
+		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
+	}
+	printf("\nlen: %d Array= %d \n\n", stack->a_count, stack->tmp_arr_count);
+	y = 0;
+	while (y < stack->b_count)
+	{
+		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
+	}
+	printf("\nlen: %d Array= %d\n\n", stack->b_count, stack->tmp_arr_count);
+}
+
+void	free_funct(char **av)
+{
+	t_stack	stack;
+	char	**tmp;
+
+	tmp = av;
+	while (tmp && *tmp)
+	{
+		printf("%s\n", *tmp);
+		free(*tmp);
+		tmp++;
+	}
+	free(av);
+	free(stack.tmp_arr);
+	free(stack.b);
+	free(stack.a);
+}
 
 int	main(int ac, char **av)
 {
@@ -92,7 +104,6 @@ int	main(int ac, char **av)
 	int		y;
 	int		x;
 
-	tmp = malloc(sizeof(char) * (900 * 900));
 	if (ac == 1)
 		alt_f4(&stack);
 	if (ac == 2)
@@ -100,6 +111,7 @@ int	main(int ac, char **av)
 		y = 1;
 		x = 0;
 		arr = ft_split(av[1], ' ');
+		tmp = malloc(sizeof(char) * (900 * 900));
 		while (arr[x])
 			tmp[y++] = arr[x++];
 	}
@@ -108,7 +120,6 @@ int	main(int ac, char **av)
 	alnum_filter(tmp, &stack);
 	numto_a(tmp, &stack);
 	dup_check(&stack);
-	num_check(tmp, &stack);
-	check(tmp, &stack);
-	free(stack.a);
+	num_check(tmp, &stack, ac);
+	check(tmp, &stack, stack.a_count, ac);
 }

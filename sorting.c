@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 11:34:07 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 01:04:17 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	swap(int *xp, int *yp)
 	*yp = temp;
 }
 
-void	sort(t_stack *stack, char a_b, char num)
+void	median(t_stack *stack, char a_b, char num, int len)
 {
 	int	i;
 	int	j;
@@ -51,25 +51,41 @@ void	sort(t_stack *stack, char a_b, char num)
 
 	i = 0;
 	j = 0;
+	stack->arr_count = len;
 	arr_dup(stack, a_b);
-	while (i < stack->arr_count)
+	printf("%d\n", stack->a[0]);
+	printf("%d\n", stack->a[1]);
+	printf("%d\n", stack->a[2]);
+	printf("%d\n", stack->a[3]);
+	printf("%d\n", stack->a[4]);
+	printf("%d\n\n", stack->a[5]);
+	while (i < len)
 	{
 		min = i;
 		j = i + 1;
-		while (j < stack->arr_count)
+		while (j < len)
 		{
 			if (stack->tmp_arr[j] < stack->tmp_arr[min])
 				min = j;
 			j++;
 		}
-		swap(&stack->tmp_arr[min], &stack->tmp_arr[i]);
+		// swap(&stack->tmp_arr[min], &stack->tmp_arr[i]);
 		i++;
 	}
+	printf("%d\n", stack->a[0]);
+	printf("%d\n", stack->a[1]);
+	printf("%d\n", stack->a[2]);
+	printf("%d\n", stack->a[3]);
+	printf("%d\n", stack->a[4]);
+	printf("%d\n\n", stack->a[5]);
 	if (num == '1')
-		med(stack, a_b);
+	{
+		stack->arr_count = len;
+		med(stack);
+	}
 }
 
-void	med(t_stack *stack, char a_b)
+void	med(t_stack *stack)
 {
 	stack->med_pos = stack->arr_count % 2;
 	if (stack->med_pos == 1)
@@ -77,7 +93,6 @@ void	med(t_stack *stack, char a_b)
 	if (stack->med_pos == 0)
 		stack->med_pos = stack->arr_count / 2;
 	stack->median = stack->tmp_arr[stack->med_pos];
-	pushing(stack, a_b);
 }
 
 void	pushing(t_stack *stack, char a_b)
@@ -85,12 +100,17 @@ void	pushing(t_stack *stack, char a_b)
 	int	x;
 
 	x = 0;
+	stack->ra_count = 0;
+	stack->rb_count = 0;
 	while (x < stack->arr_count && a_b == 'a')
 	{
 		if (stack->a[0] < stack->median)
 			pb(stack);
 		else
+		{
 			ra(stack);
+			stack->ra_count++;
+		}
 		x++;
 	}
 	x = 0;
@@ -99,9 +119,10 @@ void	pushing(t_stack *stack, char a_b)
 		if (stack->b[0] >= stack->median)
 			pa(stack);
 		else
+		{
 			rb(stack);
+			stack->rb_count++;
+		}
 		x++;
 	}
-	free(stack->tmp_arr);
-	stack->arr_count -= stack->med_pos;
 }

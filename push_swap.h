@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 11:45:07 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 00:17:08 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_stack
 	int	run_num;
 	int	run_set;
 	int	tmp_arr_count;
+	int	rb_count;
+	int	ra_count;
+	int	error;
 
 }	t_stack;
 
@@ -51,20 +54,20 @@ void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
 void	dup_check(t_stack *stack);
 int		first_two(t_stack *stack);
-void	num_check(char **av, t_stack *stack);
-void	num_check2(char **av, t_stack *stack);
-void	num_check3(char **av, t_stack *stack);
-void	check(char **av, t_stack *stack);
+void	num_check(char **av, t_stack *stack, int ac);
+int		check(char **av, t_stack *stack, int len, int ac);
 void	t_num_a(t_stack *stack, int tmp);
 void	t_num_b(t_stack *stack);
 void	two_num(t_stack *stack, char a_b);
 void	last(t_stack *stack);
 void	arr_dup(t_stack *stack, char a_b);
-void	sort(t_stack *stack, char a_b, char num);
-void	med(t_stack *stack, char a_b);
+void	median(t_stack *stack, char a_b, char num, int len);
+void	med(t_stack *stack);
 void	pushing(t_stack *stack, char a_b);
 void	rotate(t_stack *stack, char a_b, int x);
-void	x_num(t_stack *stack, char a_b, int count);
+void	quick_sort_a(char **av, t_stack *stack, int len);
+void	quick_sort_b(char **av, t_stack *stack, int len);
+void	free_funct(char **av);
 
 void	print_test(t_stack *stack, char *where_a, char *where_b);
 

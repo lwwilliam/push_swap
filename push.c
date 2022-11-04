@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:29:33 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 11:17:58 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 00:10:41 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	pb(t_stack *stack)
 		move_a_up(stack);
 	}
 	ft_printf("pb\n");
-	// print_test(stack, "a after pb", "b after pb");
 }
 
 void	move_a_up(t_stack *stack)
@@ -74,7 +73,6 @@ void	pa(t_stack *stack)
 		move_b_up(stack);
 	}
 	ft_printf("pa\n");
-	// print_test(stack, "a after pa", "b after pa");
 }
 
 void	move_b_up(t_stack *stack)

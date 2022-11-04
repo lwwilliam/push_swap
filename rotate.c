@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 10:22:15 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/02 11:18:42 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/05 00:13:14 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ra(t_stack *stack)
 	}
 	stack->a[tmp] = first;
 	ft_printf("ra\n");
-	// print_test(stack, "a after ra", "b after ra");
 }
 
 void	rb(t_stack *stack)
@@ -43,7 +42,6 @@ void	rb(t_stack *stack)
 	}
 	stack->b[tmp] = first;
 	ft_printf("rb\n");
-	// print_test(stack, "a after rb", "b after rb");
 }
 
 void	rr(t_stack *stack)
