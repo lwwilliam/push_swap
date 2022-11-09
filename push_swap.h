@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 02:34:55 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:18:23 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	rrr(t_stack *stack);
 void	dup_check(t_stack *stack);
 int		first_two(t_stack *stack);
 void	num_check(char **av, t_stack *stack, int ac);
-int		check(char **av, t_stack *stack, int len, int ac);
+void	check(char **av, t_stack *stack, int len, int ac);
 void	t_num_a(t_stack *stack, int tmp);
 void	t_num_b(t_stack *stack);
 void	two_num(t_stack *stack, char a_b);
@@ -68,6 +68,8 @@ void	rotate(t_stack *stack, char a_b, int x);
 void	quick_sort_a(char **av, t_stack *stack, int len);
 void	quick_sort_b(char **av, t_stack *stack, int len);
 void	free_funct(char **av);
+void	median_utils(t_stack *stack, int len);
+void	push_b_util(t_stack *stack);
 
 // void	print_test(t_stack *stack, char *where_a, char *where_b);
 

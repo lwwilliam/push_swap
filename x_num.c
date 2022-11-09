@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 00:54:54 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:47:33 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	t_num_a(t_stack *stack, int tmp)
 		rra(stack);
 	if (stack->a[2] < stack->a[1])
 	{
-		printf("test");
 		pb(stack);
 		sa(stack);
 		pa(stack);

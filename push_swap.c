@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 02:35:07 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:02:42 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	main(int ac, char **av)
 	int		x;
 
 	if (ac == 1)
-		alt_f4(&stack);
+		exit(0);
 	if (ac == 2)
 	{
 		y = 1;

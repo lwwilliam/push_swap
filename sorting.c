@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 02:34:46 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:34:31 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ void	median(t_stack *stack, char a_b, char num, int len)
 		i++;
 	}
 	if (num == '1')
-	{
-		stack->arr_count = len;
-		med(stack);
-	}
+		median_utils(stack, len);
 }
 
 void	med(t_stack *stack)
@@ -104,13 +101,7 @@ void	pushing(t_stack *stack, char a_b)
 	x = 0;
 	while (x < stack->arr_count && a_b == 'b')
 	{
-		if (stack->b[0] >= stack->median)
-			pa(stack);
-		else
-		{
-			rb(stack);
-			stack->rb_count++;
-		}
+		push_b_util(stack);
 		x++;
 	}
 }

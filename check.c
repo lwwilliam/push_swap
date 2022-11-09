@@ -6,13 +6,13 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/05 02:34:36 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:07:07 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check(char **av, t_stack *stack, int len, int ac)
+void	check(char **av, t_stack *stack, int len, int ac)
 {
 	int	x;
 	int	r_w;
@@ -29,19 +29,14 @@ int	check(char **av, t_stack *stack, int len, int ac)
 		}
 		x++;
 	}
-	free(stack->tmp_arr);
 	free(stack->b);
 	free(stack->a);
 	if (x == stack->a_count && r_w == 0 && stack->b_count == 0)
 	{
-		printf("\n");
 		if (ac < 3)
 			free_funct(av);
 		exit(0);
 	}
-	else if (x == stack->a_count && r_w == 0)
-		return (1);
-	return (0);
 }
 
 void	dup_check(t_stack *stack)
@@ -116,9 +111,7 @@ void	quick_sort_b(char **av, t_stack *stack, int len)
 {
 	median(stack, 'b', '1', len);
 	if (len == 2)
-	{
 		two_num(stack, 'b');
-	}
 	if (len == 3)
 	{
 		t_num_b(stack);

@@ -6,7 +6,7 @@
 #    By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 18:10:19 by lwilliam          #+#    #+#              #
-#    Updated: 2022/11/05 00:16:35 by lwilliam         ###   ########.fr        #
+#    Updated: 2022/11/09 12:54:23 by lwilliam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ all : $(NAME)
 
 $(NAME) :
 	make libft
-	$(CC) $(CFLAGS) $(SRC) $(NAME) -o push_swap #-fsanitize=address
+	$(CC) $(CFLAGS) $(SRC) $(NAME) -o push_swap 
 
 libft:
 	make -C libft_printf
@@ -36,10 +36,6 @@ clean :
 fclean : clean
 	rm -f $(NAME) push_swap
 	make fclean -C libft_printf
-
-test :
-	make
-	./push_swap 11 19 9 20 7 10 5 8 6 13 17 14 15 3 18 12 16 1 2 4
 
 re : fclean all
 	make re -C libft_printf
