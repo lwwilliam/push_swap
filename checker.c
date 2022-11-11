@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/11 19:14:28 by lwilliam         ###   ########.fr       */
+/*   Created: 2022/11/11 17:48:11 by lwilliam          #+#    #+#             */
+/*   Updated: 2022/11/11 21:22:14 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	alnum_filter(char **av, t_stack *stack)
+void	alnum_filter_bonus(char **av, t_bonus *bonus)
 {
 	int		x;
 	int		y;
@@ -33,11 +33,10 @@ void	alnum_filter(char **av, t_stack *stack)
 				alt_f4(1);
 		}
 	}
-	stack->a_count = (x - 1);
-	stack->arr_count = stack->a_count;
+	bonus->a_count = (x - 1);
 }
 
-void	numto_a(char **av, t_stack *stack)
+void	numto_a_bonus(char **av, t_bonus *bonus)
 {
 	int		x;
 	int		x_a;
@@ -45,16 +44,16 @@ void	numto_a(char **av, t_stack *stack)
 
 	x = 0;
 	x_a = 0;
-	num = malloc(sizeof(int) * (stack->a_count + 1));
+	num = malloc(sizeof(int) * (bonus->a_count + 1));
 	while (av[++x])
 	{
 		num[x_a] = (int)ft_atoi(av[x]);
 		x_a++;
 	}
-	stack->a = num;
+	bonus->a = num;
 }
 
-void	dup_check(int *where, int where_len)
+void	dup_check_bonus(int *where, int where_len)
 {
 	int	x;
 	int	y;
@@ -76,27 +75,17 @@ void	dup_check(int *where, int where_len)
 	}
 }
 
-// void	print_test(t_stack *stack, char *where_a, char *where_b)
-// {
-// 	int	y;
+void	get_oppr(t_bonus *bonus)
+{
+	char *str;
 
-// 	y = 0;
-// 	while (y < stack->a_count)
-// 	{
-// 		printf("\033[32m| %s: %d \033[0m", where_a, stack->a[y++]);
-// 	}
-// 	printf("\nlen: %d Array= %d \n\n", stack->a_count, stack->tmp_arr_count);
-// 	y = 0;
-// 	while (y < stack->b_count)
-// 	{
-// 		printf("\033[34m| %s: %d \033[0m", where_b, stack->b[y++]);
-// 	}
-// 	printf("\nlen: %d Array= %d\n\n", stack->b_count, stack->tmp_arr_count);
-// }
+	str = get_next_line(1);
+	printf("test)
+}
 
 int	main(int ac, char **av)
 {
-	t_stack	stack;
+	t_bonus	bonus;
 	char	**tmp;
 	char	**arr;
 	int		y;
@@ -115,10 +104,8 @@ int	main(int ac, char **av)
 	}
 	else
 		tmp = av;
-	init_funct(&stack);
-	alnum_filter(tmp, &stack);
-	numto_a(tmp, &stack);
-	dup_check(stack.a, stack.a_count);
-	num_check(tmp, &stack, ac);
-	check(tmp, &stack, stack.a_count, ac);
+	alnum_filter_bonus(tmp, &bonus);
+	numto_a_bonus(tmp, &bonus);
+	dup_check_bonus(bonus.a, bonus.a_count);
+	get_oppr(&bonus);
 }

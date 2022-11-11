@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:57 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/09 12:18:23 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:16:54 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include "./libft_printf/libft.h"
 # include "./libft_printf/ft_printf/ft_printf.h"
+# include "./libft_printf/gnl/get_next_line.h"
 
 typedef struct s_stack
 {
@@ -35,10 +36,17 @@ typedef struct s_stack
 	int	rb_count;
 	int	ra_count;
 	int	error;
-
 }	t_stack;
 
-void	alt_f4(t_stack *stack);
+typedef struct s_bonus
+{
+	int	*a;
+	int	*b;
+	int	a_count;
+	int	b_count;
+}	t_bonus;
+
+void	alt_f4(int num);
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
 void	ss(t_stack *stack);
@@ -52,7 +60,7 @@ void	rr(t_stack *stack);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
-void	dup_check(t_stack *stack);
+void	dup_check(int *where, int where_len);
 int		first_two(t_stack *stack);
 void	num_check(char **av, t_stack *stack, int ac);
 void	check(char **av, t_stack *stack, int len, int ac);
@@ -70,7 +78,12 @@ void	quick_sort_b(char **av, t_stack *stack, int len);
 void	free_funct(char **av);
 void	median_utils(t_stack *stack, int len);
 void	push_b_util(t_stack *stack);
+void	init_funct(t_stack *stack);
 
+void	alnum_filter_bonus(char **av, t_bonus *bonus);
+void	numto_a_bonus(char **av, t_bonus *bonus);
+void	dup_check_bonus(int *where, int where_len);
+void	get_oppr(t_bonus *bonus);
 // void	print_test(t_stack *stack, char *where_a, char *where_b);
 
 #endif

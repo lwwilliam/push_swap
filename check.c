@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/09 13:07:07 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:54:46 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,6 @@ void	check(char **av, t_stack *stack, int len, int ac)
 		if (ac < 3)
 			free_funct(av);
 		exit(0);
-	}
-}
-
-void	dup_check(t_stack *stack)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (x < stack->a_count)
-	{
-		y = x + 1;
-		while (y < stack->a_count)
-		{
-			if (stack->a[x] - stack->a[y] == 0)
-			{
-				write(2, "Error\n", 6);
-				exit(0);
-			}
-			y++;
-		}
-		x++;
 	}
 }
 
@@ -126,4 +104,18 @@ void	quick_sort_b(char **av, t_stack *stack, int len)
 			+ (len % 2));
 		quick_sort_b(av, stack, (len / 2));
 	}
+}
+
+void	free_funct(char **av)
+{
+	char	**tmp;
+
+	tmp = av;
+	while (tmp && *tmp)
+	{
+		printf("%s\n", *tmp);
+		free(*tmp);
+		tmp++;
+	}
+	free(av);
 }
