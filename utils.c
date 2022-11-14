@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 00:10:02 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/14 16:40:53 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:48:17 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	alt_f4(int num)
 {
 	(void)num;
 	write(2, "Error\n", 6);
-	exit(0);
+	exit(1);
 }
 
 void	median_utils(t_stack *stack, int len)

@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/14 10:20:29 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:48:14 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	dup_check(int *where, int where_len)
 			if (where[x] - where[y] == 0)
 			{
 				write(2, "Error\n", 6);
-				exit(0);
+				exit(1);
 			}
 			y++;
 		}
@@ -104,7 +104,7 @@ int	main(int ac, char **av)
 	int		x;
 
 	if (ac == 1)
-		exit(0);
+		exit(1);
 	if (ac == 2)
 	{
 		y = 1;

@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:48:11 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/14 18:37:51 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:47:54 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	dup_check_bonus(int *where, int where_len)
 			if (where[x] - where[y] == 0)
 			{
 				write(2, "Error\n", 6);
-				exit(0);
+				exit(1);
 			}
 			y++;
 		}
@@ -71,7 +71,7 @@ void	operator_check(char *opr)
 	{
 		free(opr);
 		write(1, "Invalid operator\n", 17);
-		exit(0);
+		exit(1);
 	}
 }
 
@@ -103,7 +103,7 @@ int	main(int ac, char **av)
 	int		x;
 
 	if (ac == 1)
-		exit(0);
+		exit(1);
 	if (ac == 2)
 	{
 		y = 1;
