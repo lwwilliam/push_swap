@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 00:10:02 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/11 18:57:54 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:40:53 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	rotate(t_stack *stack, char a_b, int x)
 	tmp = x;
 	while (tmp > 0 && a_b == 'b')
 	{
-		rrb(stack);
+		rrb(stack->b, stack->b_count, 'm');
 		tmp--;
 	}
 	while (tmp > 0 && a_b == 'a')
 	{
-		rra(stack);
+		rra(stack->a, stack->a_count, 'm');
 		tmp--;
 	}
 }
@@ -49,7 +49,7 @@ void	push_b_util(t_stack *stack)
 		pa(stack);
 	else
 	{
-		rb(stack);
+		rb(stack->b, stack->b_count, 'm');
 		stack->rb_count++;
 	}
 }
@@ -59,6 +59,5 @@ void	init_funct(t_stack *stack)
 	stack->b_count = 0;
 	stack->run_num = 0;
 	stack->run_set = 1;
-	stack->b = malloc(sizeof(int) * (stack->a_count + 1));
 	stack->error = 0;
 }

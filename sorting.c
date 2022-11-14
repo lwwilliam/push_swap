@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:24:23 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/09 12:34:31 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:39:28 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	pushing(t_stack *stack, char a_b)
 			pb(stack);
 		else
 		{
-			ra(stack);
+			ra(stack->a, stack->a_count, 'm');
 			stack->ra_count++;
 		}
 		x++;

@@ -6,34 +6,36 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:05:56 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/11 20:54:35 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:42:19 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack *stack)
+void	sa(int *arr_a, char man_bon)
 {
 	int	tmp;
 
-	tmp = stack->a[0];
-	stack->a[0] = stack->a[1];
-	stack->a[1] = tmp;
-	ft_printf("sa\n");
+	tmp = arr_a[0];
+	arr_a[0] = arr_a[1];
+	arr_a[1] = tmp;
+	if (man_bon == 'm')
+		ft_printf("sa\n");
 }
 
-void	sb(t_stack *stack)
+void	sb(int *arr_b, char man_bon)
 {
 	int	tmp;
 
-	tmp = stack->b[0];
-	stack->b[0] = stack->b[1];
-	stack->b[1] = tmp;
-	ft_printf("sb\n");
+	tmp = arr_b[0];
+	arr_b[0] = arr_b[1];
+	arr_b[1] = tmp;
+	if (man_bon == 'm')
+		ft_printf("sb\n");
 }
 
-void	ss(t_stack *stack)
+void	ss(int *arr_a, int *arr_b)
 {
-	sa(stack);
-	sb(stack);
+	sa(arr_a, 'm');
+	sb(arr_b, 'm');
 }

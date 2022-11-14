@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:00:59 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/11 20:54:46 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:20:39 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void	free_funct(char **av)
 	tmp = av;
 	while (tmp && *tmp)
 	{
-		printf("%s\n", *tmp);
 		free(*tmp);
 		tmp++;
 	}

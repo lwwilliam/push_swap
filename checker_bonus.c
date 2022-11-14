@@ -1,40 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:48:11 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/11 21:22:14 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:37:51 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	alnum_filter_bonus(char **av, t_bonus *bonus)
-{
-	int		x;
-	int		y;
-	long	num;
-	char	tmp;
-
-	x = 0;
-	while (av[++x])
-	{
-		num = ft_atoi(av[x]);
-		if (num > 2147483647 || num < -2147483648)
-			alt_f4(1);
-		y = (av[x][0] == '-' && ft_strlen(av[x]) > 1);
-		while (av[x][y])
-		{
-			tmp = av[x][y++];
-			if (ft_isalpha(tmp) == 1 || ft_isdigit(tmp) == 0)
-				alt_f4(1);
-		}
-	}
-	bonus->a_count = (x - 1);
-}
 
 void	numto_a_bonus(char **av, t_bonus *bonus)
 {
@@ -45,6 +21,7 @@ void	numto_a_bonus(char **av, t_bonus *bonus)
 	x = 0;
 	x_a = 0;
 	num = malloc(sizeof(int) * (bonus->a_count + 1));
+	bonus->b = malloc(sizeof(int) * (bonus->a_count + 1));
 	while (av[++x])
 	{
 		num[x_a] = (int)ft_atoi(av[x]);
@@ -75,12 +52,46 @@ void	dup_check_bonus(int *where, int where_len)
 	}
 }
 
+void	operator_check(char *opr)
+{
+	int	oppr_error;
+
+	oppr_error = 1;
+	if (!ft_strncmp("sa", opr, 4) || !ft_strncmp("sb", opr, 4))
+		oppr_error = 0;
+	else if (!ft_strncmp("pa", opr, 4) || !ft_strncmp("pb", opr, 4))
+		oppr_error = 0;
+	else if (!ft_strncmp("ra", opr, 4) || !ft_strncmp("rb", opr, 4))
+		oppr_error = 0;
+	else if (!ft_strncmp("rra", opr, 4))
+		oppr_error = 0;
+	else if (!ft_strncmp("rrb", opr, 4))
+		oppr_error = 0;
+	if (oppr_error == 1)
+	{
+		free(opr);
+		write(1, "Invalid operator\n", 17);
+		exit(0);
+	}
+}
+
 void	get_oppr(t_bonus *bonus)
 {
-	char *str;
+	char	*opr;
+	char	*trimmed;
 
-	str = get_next_line(1);
-	printf("test)
+	opr = get_next_line(0);
+	if (opr == NULL || opr[0] == '\n')
+	{
+		free(opr);
+		return ;
+	}
+	trimmed = ft_strtrim(opr, "\n");
+	free(opr);
+	operator_check(trimmed);
+	bonus_sort(trimmed, bonus);
+	free(trimmed);
+	get_oppr(bonus);
 }
 
 int	main(int ac, char **av)
@@ -104,8 +115,10 @@ int	main(int ac, char **av)
 	}
 	else
 		tmp = av;
+	bonus.b_count = 0;
 	alnum_filter_bonus(tmp, &bonus);
 	numto_a_bonus(tmp, &bonus);
 	dup_check_bonus(bonus.a, bonus.a_count);
 	get_oppr(&bonus);
+	bonus_check(&bonus, bonus.a_count);
 }

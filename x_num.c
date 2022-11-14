@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:31:25 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/09 11:47:33 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:10:26 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 void	t_num_a(t_stack *stack, int tmp)
 {
 	if (stack->a[0] > stack->a[2] && stack->a[1] < stack->a[2] && tmp == 0)
-		ra(stack);
+		ra(stack->a, stack->a_count, 'm');
 	if (stack->a[1] < stack->a[0])
-		sa(stack);
+		sa(stack->a, 'm');
 	if (stack->a[2] < stack->a[0] && tmp == 0)
-		rra(stack);
+		rra(stack->a, stack->a_count, 'm');
 	if (stack->a[2] < stack->a[1])
 	{
 		pb(stack);
-		sa(stack);
+		sa(stack->a, 'm');
 		pa(stack);
 		if (stack->a[1] < stack->a[0])
-			sa(stack);
+			sa(stack->a, 'm');
 	}
 }
 
@@ -36,14 +36,14 @@ void	t_num_b(t_stack *stack)
 
 	x = 3;
 	if (stack->b[1] > stack->b[0])
-		sb(stack);
+		sb(stack->b, 'm');
 	if (stack->b[2] > stack->b[1])
 	{
 		pa(stack);
-		sb(stack);
+		sb(stack->b, 'm');
 		pb(stack);
 		if (stack->b[1] > stack->b[0])
-			sb(stack);
+			sb(stack->b, 'm');
 	}
 	while (x-- > 0)
 		pa(stack);
@@ -52,11 +52,11 @@ void	t_num_b(t_stack *stack)
 void	two_num(t_stack *stack, char a_b)
 {
 	if (stack->a[1] < stack->a[0] && a_b == 'a')
-		sa(stack);
+		sa(stack->a, 'm');
 	if (a_b == 'b' && stack->b_count > 1)
 	{
 		if (stack->b[1] > stack->b[0])
-			sb(stack);
+			sb(stack->b, 'm');
 		pa(stack);
 		pa(stack);
 		stack->arr_count += 2;
