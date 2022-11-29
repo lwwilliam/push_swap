@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:24:04 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/14 18:50:53 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:02:35 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	alnum_filter(char **av, t_stack *stack)
 	x = 0;
 	while (av[++x])
 	{
-		if (av != NULL)
-			alt_f4(1);
 		num = ft_atoi(av[x]);
 		if (num > 2147483647 || num < -2147483648)
 			alt_f4(1);
