@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:38:24 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/11/14 18:47:32 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:23:45 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ void	alnum_filter_bonus(char **av, t_bonus *bonus)
 	x = 0;
 	while (av[++x])
 	{
-		if (av != NULL)
+		if (av[x][0] == 0)
 		{
-			write(2, "Error!\n", 6);
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		num = ft_atoi(av[x]);
