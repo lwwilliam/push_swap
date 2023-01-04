@@ -6,7 +6,7 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 11:05:21 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/06/03 12:01:21 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/04 23:02:30 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 // int main()
 // {
 // 	char *s1 = "111111";
-// 	printf("%s\n", ft_strtrim(s1, "1"));
+// 	// printf("%s\n", ft_strtrim(s1, "1"));
 
 // 	return (0);
 // }

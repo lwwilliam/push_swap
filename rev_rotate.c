@@ -6,52 +6,48 @@
 /*   By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:39:51 by lwilliam          #+#    #+#             */
-/*   Updated: 2022/09/19 10:56:58 by lwilliam         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:32:51 by lwilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack *stack)
+void	rra(int *arr_a, int a_count, char man_bon)
 {
 	int	tmp;
 	int	last;
 
-	last = stack->a[stack->a_count - 1];
-	tmp = stack->a_count - 1;
+	last = arr_a[a_count - 1];
+	tmp = a_count - 1;
 	while (tmp > -1)
 	{
-		stack->a[tmp + 1] = stack->a[tmp];
+		arr_a[tmp + 1] = arr_a[tmp];
 		tmp--;
 	}
-	stack->a[0] = last;
-	print_test(stack, "a after rra", "b after rra");
+	arr_a[0] = last;
+	if (man_bon == 'm')
+		ft_printf("rra\n");
 }
 
-void	rrb(t_stack *stack)
+void	rrb(int	*arr_b, int b_count, char man_bon)
 {
 	int	tmp;
 	int	last;
 
-	last = stack->b[stack->b_count - 1];
-	tmp = stack->b_count - 1;
+	last = arr_b[b_count - 1];
+	tmp = b_count - 1;
 	while (tmp > -1)
 	{
-		stack->b[tmp + 1] = stack->b[tmp];
+		arr_b[tmp + 1] = arr_b[tmp];
 		tmp--;
 	}
-	stack->b[0] = last;
-	print_test(stack, "a after rrb", "b after rrb");
+	arr_b[0] = last;
+	if (man_bon == 'm')
+		ft_printf("rrb\n");
 }
 
-void	rrr(t_stack *stack)
+void	rrr(int *arr_a, int *arr_b, int a_count, int b_count)
 {
-	printf("\033[1;31m");
-	printf("start of rrr\n\n");
-	printf("\033[0m");
-	rra(stack);
-	rrb(stack);
-	printf("\033[1;31m");
-	printf("end of rrr\n\n");
-	printf("\033[0m");
+	rra(arr_a, a_count, 'm');
+	rrb(arr_b, b_count, 'm');
 }
